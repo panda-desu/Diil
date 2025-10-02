@@ -1,0 +1,233 @@
+[
+  {
+    "companyName": "TechNova",
+    "logo": "https://example.com/logos/technova.png",
+    "createdDate": "2025-09-30",
+    "location": "Ulaanbaatar, Mongolia",
+    "name": "Frontend Developer",
+    "salary": "6900000",
+    "isLiked": false,
+    "culture1": "Innovative",
+    "culture2": "Collaborative"
+  },
+  {
+    "companyName": "GreenSolutions",
+    "logo": "https://example.com/logos/greensolutions.png",
+    "createdDate": "2025-09-28",
+    "location": "Erdenet, Mongolia",
+    "name": "Backend Engineer",
+    "salary": "6210000",
+    "isLiked": true,
+    "culture1": "Sustainable",
+    "culture2": "Flexible"
+  },
+  {
+    "companyName": "Skyline Corp",
+    "logo": "https://example.com/logos/skyline.png",
+    "createdDate": "2025-09-25",
+    "location": "Darkhan, Mongolia",
+    "name": "UI/UX Designer",
+    "salary": "5175000",
+    "isLiked": false,
+    "culture1": "Creative",
+    "culture2": "Open-minded"
+  },
+  {
+    "companyName": "ByteWorks",
+    "logo": "https://example.com/logos/byteworks.png",
+    "createdDate": "2025-09-27",
+    "location": "Ulaanbaatar, Mongolia",
+    "name": "Full Stack Developer",
+    "salary": "8625000",
+    "isLiked": true,
+    "culture1": "Team-oriented",
+    "culture2": "Growth-focused"
+  },
+  {
+    "companyName": "CloudSync",
+    "logo": "https://example.com/logos/cloudsync.png",
+    "createdDate": "2025-09-29",
+    "location": "Ulaanbaatar, Mongolia",
+    "name": "DevOps Engineer",
+    "salary": "7590000",
+    "isLiked": false,
+    "culture1": "Efficient",
+    "culture2": "Supportive"
+  },
+  {
+    "companyName": "NextGen AI",
+    "logo": "https://example.com/logos/nextgenai.png",
+    "createdDate": "2025-09-26",
+    "location": "Erdenet, Mongolia",
+    "name": "Machine Learning Engineer",
+    "salary": "10350000",
+    "isLiked": true,
+    "culture1": "Innovative",
+    "culture2": "Challenging"
+  },
+  {
+    "companyName": "BlueWave",
+    "logo": "https://example.com/logos/bluewave.png",
+    "createdDate": "2025-09-24",
+    "location": "Darkhan, Mongolia",
+    "name": "Product Manager",
+    "salary": "8625000",
+    "isLiked": false,
+    "culture1": "Collaborative",
+    "culture2": "Transparent"
+  },
+  {
+    "companyName": "RedStone Tech",
+    "logo": "https://example.com/logos/redstone.png",
+    "createdDate": "2025-09-23",
+    "location": "Ulaanbaatar, Mongolia",
+    "name": "QA Engineer",
+    "salary": "5520000",
+    "isLiked": true,
+    "culture1": "Detail-oriented",
+    "culture2": "Team-focused"
+  },
+  {
+    "companyName": "EcoSolutions",
+    "logo": "https://example.com/logos/ecosolutions.png",
+    "createdDate": "2025-09-22",
+    "location": "Erdenet, Mongolia",
+    "name": "Environmental Analyst",
+    "salary": "4830000",
+    "isLiked": false,
+    "culture1": "Sustainable",
+    "culture2": "Community-driven"
+  },
+  {
+    "companyName": "QuantumLeap",
+    "logo": "https://example.com/logos/quantumleap.png",
+    "createdDate": "2025-09-21",
+    "location": "Ulaanbaatar, Mongolia",
+    "name": "Blockchain Developer",
+    "salary": "9660000",
+    "isLiked": true,
+    "culture1": "Innovative",
+    "culture2": "Fast-paced"
+  },
+  {
+    "companyName": "BrightMind",
+    "logo": "https://example.com/logos/brightmind.png",
+    "createdDate": "2025-09-20",
+    "location": "Darkhan, Mongolia",
+    "name": "Data Scientist",
+    "salary": "9315000",
+    "isLiked": false,
+    "culture1": "Analytical",
+    "culture2": "Growth-focused"
+  },
+  {
+    "companyName": "Sunrise Tech",
+    "logo": "https://example.com/logos/sunrise.png",
+    "createdDate": "2025-09-19",
+    "location": "Ulaanbaatar, Mongolia",
+    "name": "Mobile App Developer",
+    "salary": "6900000",
+    "isLiked": true,
+    "culture1": "Creative",
+    "culture2": "Innovative"
+  },
+  {
+    "companyName": "SilverLine",
+    "logo": "https://example.com/logos/silverline.png",
+    "createdDate": "2025-09-18",
+    "location": "Erdenet, Mongolia",
+    "name": "UI Developer",
+    "salary": "6210000",
+    "isLiked": false,
+    "culture1": "User-focused",
+    "culture2": "Team-oriented"
+  },
+  {
+    "companyName": "PeakTech",
+    "logo": "https://example.com/logos/peaktech.png",
+    "createdDate": "2025-09-17",
+    "location": "Ulaanbaatar, Mongolia",
+    "name": "Cybersecurity Analyst",
+    "salary": "8625000",
+    "isLiked": true,
+    "culture1": "Security-minded",
+    "culture2": "Collaborative"
+  },
+  {
+    "companyName": "AlphaWave",
+    "logo": "https://example.com/logos/alphawave.png",
+    "createdDate": "2025-09-16",
+    "location": "Darkhan, Mongolia",
+    "name": "System Administrator",
+    "salary": "6555000",
+    "isLiked": false,
+    "culture1": "Organized",
+    "culture2": "Supportive"
+  },
+  {
+    "companyName": "NeoTech",
+    "logo": "https://example.com/logos/neotech.png",
+    "createdDate": "2025-09-15",
+    "location": "Ulaanbaatar, Mongolia",
+    "name": "Cloud Engineer",
+    "salary": "7935000",
+    "isLiked": true,
+    "culture1": "Innovative",
+    "culture2": "Flexible"
+  },
+  {
+    "companyName": "SkyTech",
+    "logo": "https://example.com/logos/skytech.png",
+    "createdDate": "2025-09-14",
+    "location": "Erdenet, Mongolia",
+    "name": "Software Tester",
+    "salary": "5865000",
+    "isLiked": false,
+    "culture1": "Detail-oriented",
+    "culture2": "Collaborative"
+  },
+  {
+    "companyName": "BrightCode",
+    "logo": "https://example.com/logos/brightcode.png",
+    "createdDate": "2025-09-13",
+    "location": "Ulaanbaatar, Mongolia",
+    "name": "Frontend Engineer",
+    "salary": "6900000",
+    "isLiked": true,
+    "culture1": "Creative",
+    "culture2": "Team-focused"
+  },
+  {
+    "companyName": "InnovateX",
+    "logo": "https://example.com/logos/innovatex.png",
+    "createdDate": "2025-09-12",
+    "location": "Darkhan, Mongolia",
+    "name": "Project Manager",
+    "salary": "8970000",
+    "isLiked": false,
+    "culture1": "Leadership-driven",
+    "culture2": "Transparent"
+  },
+  {
+    "companyName": "CodeSphere",
+    "logo": "https://example.com/logos/codesphere.png",
+    "createdDate": "2025-09-11",
+    "location": "Ulaanbaatar, Mongolia",
+    "name": "Backend Developer",
+    "salary": "7590000",
+    "isLiked": true,
+    "culture1": "Efficient",
+    "culture2": "Collaborative"
+  },
+  {
+    "companyName": "DataCore",
+    "logo": "https://example.com/logos/datacore.png",
+    "createdDate": "2025-09-10",
+    "location": "Erdenet, Mongolia",
+    "name": "Data Analyst",
+    "salary": "6210000",
+    "isLiked": false,
+    "culture1": "Analytical",
+    "culture2": "Growth-focused"
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "name": {
+      "mn": "Ажлын байр",
+      "en": "Workplace",
+      "rs": "Рабочее место"
+    },
+    "link": "/",
+    "img": "/img/sidebar/workplace.svg",
+    "selectedImg": "/img/sidebar/workplaceh.svg",
+    "id": 0
+  },
+  {
+    "name": {
+      "mn": "Компаниуд",
+      "en": "Companies",
+      "rs": "Компании"
+    },
+    "link": "/companies",
+    "img": "/img/sidebar/company.svg",
+    "selectedImg": "/img/sidebar/companyh.svg",
+    "id": 1
+  },
+  {
+    "name": {
+      "mn": "Ярилцлагууд",
+      "en": "Интервью",
+      "rs": "Interviews"
+    },
+    "link": "/interviews",
+    "img": "/img/sidebar/inter.svg",
+    "selectedImg": "/img/sidebar/interh.svg",
+    "id": 2
+  },
+  {
+    "name": {
+      "mn": "Work DNA",
+      "en": "Work DNA",
+      "rs": "Рабочая ДНК"
+    },
+    "link": "/work",
+    "img": "/img/sidebar/dna.svg",
+    "selectedImg": "/img/sidebar/dnah.svg",
+    "id": 3
+  },
+  {
+    "name": {
+      "mn": "Тоглоом",
+      "en": "Game",
+      "rs": "Игра"
+    },
+    "link": "/games",
+    "img": "/img/sidebar/game.svg",
+    "selectedImg": "/img/sidebar/gameh.svg",
+    "id": 4
+  }
+]
