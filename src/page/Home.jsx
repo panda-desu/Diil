@@ -176,7 +176,7 @@ const Home = () => {
                     src={items.logo}
                     alt="logo"
                   />
-                  <div className="w-[18rem]">
+                  <div className="w-[14.5rem]">
                     <p className="font-bold text-[#020618] truncate">
                       {items.name}
                     </p>

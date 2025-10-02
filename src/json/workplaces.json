@@ -1,7 +1,7 @@
 [
   {
     "companyName": "TechNova",
-    "logo": "https://example.com/logos/technova.png",
+    "logo": "/img/logo/mobicom.svg",
     "createdDate": "2025-09-30",
     "location": "Ulaanbaatar, Mongolia",
     "name": "Frontend Developer",
@@ -12,7 +12,7 @@
   },
   {
     "companyName": "GreenSolutions",
-    "logo": "https://example.com/logos/greensolutions.png",
+    "logo": "/img/logo/monpay.svg",
     "createdDate": "2025-09-28",
     "location": "Erdenet, Mongolia",
     "name": "Backend Engineer",
@@ -23,7 +23,7 @@
   },
   {
     "companyName": "Skyline Corp",
-    "logo": "https://example.com/logos/skyline.png",
+    "logo": "/img/logo/tdb.svg",
     "createdDate": "2025-09-25",
     "location": "Darkhan, Mongolia",
     "name": "UI/UX Designer",
@@ -34,7 +34,7 @@
   },
   {
     "companyName": "ByteWorks",
-    "logo": "https://example.com/logos/byteworks.png",
+    "logo": "/img/logo/manoto.svg",
     "createdDate": "2025-09-27",
     "location": "Ulaanbaatar, Mongolia",
     "name": "Full Stack Developer",
@@ -45,7 +45,7 @@
   },
   {
     "companyName": "CloudSync",
-    "logo": "https://example.com/logos/cloudsync.png",
+    "logo": "/img/logo/ub.svg",
     "createdDate": "2025-09-29",
     "location": "Ulaanbaatar, Mongolia",
     "name": "DevOps Engineer",
@@ -56,7 +56,7 @@
   },
   {
     "companyName": "NextGen AI",
-    "logo": "https://example.com/logos/nextgenai.png",
+    "logo": "/img/logo/upoint.svg",
     "createdDate": "2025-09-26",
     "location": "Erdenet, Mongolia",
     "name": "Machine Learning Engineer",
@@ -67,7 +67,7 @@
   },
   {
     "companyName": "BlueWave",
-    "logo": "https://example.com/logos/bluewave.png",
+    "logo": "/img/logo/socialpay.svg",
     "createdDate": "2025-09-24",
     "location": "Darkhan, Mongolia",
     "name": "Product Manager",
@@ -78,7 +78,7 @@
   },
   {
     "companyName": "RedStone Tech",
-    "logo": "https://example.com/logos/redstone.png",
+    "logo": "/img/logo/xac.svg",
     "createdDate": "2025-09-23",
     "location": "Ulaanbaatar, Mongolia",
     "name": "QA Engineer",
@@ -89,7 +89,7 @@
   },
   {
     "companyName": "EcoSolutions",
-    "logo": "https://example.com/logos/ecosolutions.png",
+    "logo": "/img/logo/mbank.svg",
     "createdDate": "2025-09-22",
     "location": "Erdenet, Mongolia",
     "name": "Environmental Analyst",
@@ -100,7 +100,7 @@
   },
   {
     "companyName": "QuantumLeap",
-    "logo": "https://example.com/logos/quantumleap.png",
+    "logo": "/img/logo/toki.svg",
     "createdDate": "2025-09-21",
     "location": "Ulaanbaatar, Mongolia",
     "name": "Blockchain Developer",
@@ -111,7 +111,7 @@
   },
   {
     "companyName": "BrightMind",
-    "logo": "https://example.com/logos/brightmind.png",
+    "logo": "/img/logo/manoto.svg",
     "createdDate": "2025-09-20",
     "location": "Darkhan, Mongolia",
     "name": "Data Scientist",
@@ -122,7 +122,7 @@
   },
   {
     "companyName": "Sunrise Tech",
-    "logo": "https://example.com/logos/sunrise.png",
+    "logo": "/img/logo/mobicom.svg",
     "createdDate": "2025-09-19",
     "location": "Ulaanbaatar, Mongolia",
     "name": "Mobile App Developer",
@@ -133,7 +133,7 @@
   },
   {
     "companyName": "SilverLine",
-    "logo": "https://example.com/logos/silverline.png",
+    "logo": "/img/logo/tdb.svg",
     "createdDate": "2025-09-18",
     "location": "Erdenet, Mongolia",
     "name": "UI Developer",
@@ -144,7 +144,7 @@
   },
   {
     "companyName": "PeakTech",
-    "logo": "https://example.com/logos/peaktech.png",
+    "logo": "/img/logo/xac.svg",
     "createdDate": "2025-09-17",
     "location": "Ulaanbaatar, Mongolia",
     "name": "Cybersecurity Analyst",
@@ -155,7 +155,7 @@
   },
   {
     "companyName": "AlphaWave",
-    "logo": "https://example.com/logos/alphawave.png",
+    "logo": "/img/logo/ub.svg",
     "createdDate": "2025-09-16",
     "location": "Darkhan, Mongolia",
     "name": "System Administrator",
@@ -166,7 +166,7 @@
   },
   {
     "companyName": "NeoTech",
-    "logo": "https://example.com/logos/neotech.png",
+    "logo": "/img/logo/upoint.svg",
     "createdDate": "2025-09-15",
     "location": "Ulaanbaatar, Mongolia",
     "name": "Cloud Engineer",
@@ -177,7 +177,7 @@
   },
   {
     "companyName": "SkyTech",
-    "logo": "https://example.com/logos/skytech.png",
+    "logo": "/img/logo/socialpay.svg",
     "createdDate": "2025-09-14",
     "location": "Erdenet, Mongolia",
     "name": "Software Tester",
@@ -188,7 +188,7 @@
   },
   {
     "companyName": "BrightCode",
-    "logo": "https://example.com/logos/brightcode.png",
+    "logo": "/img/logo/toki.svg",
     "createdDate": "2025-09-13",
     "location": "Ulaanbaatar, Mongolia",
     "name": "Frontend Engineer",
@@ -199,7 +199,7 @@
   },
   {
     "companyName": "InnovateX",
-    "logo": "https://example.com/logos/innovatex.png",
+    "logo": "/img/logo/monpay.svg",
     "createdDate": "2025-09-12",
     "location": "Darkhan, Mongolia",
     "name": "Project Manager",
@@ -210,7 +210,7 @@
   },
   {
     "companyName": "CodeSphere",
-    "logo": "https://example.com/logos/codesphere.png",
+    "logo": "/img/logo/mbank.svg",
     "createdDate": "2025-09-11",
     "location": "Ulaanbaatar, Mongolia",
     "name": "Backend Developer",
@@ -221,7 +221,7 @@
   },
   {
     "companyName": "DataCore",
-    "logo": "https://example.com/logos/datacore.png",
+    "logo": "/img/logo/manoto.svg",
     "createdDate": "2025-09-10",
     "location": "Erdenet, Mongolia",
     "name": "Data Analyst",
