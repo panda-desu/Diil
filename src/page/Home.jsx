@@ -321,7 +321,7 @@ const Home = () => {
                 <div className="absolute inset-0 bg-[linear-gradient(50deg,#29FFE2,#4258FF)] opacity-10 rounded-2xl pointer-events-none"></div>
 
                 <div className="relative w-full flex items-center justify-between">
-                  <img src="/img/logo/upoint.svg" alt="logo" />
+                  <img src="/img/logo/tdb.svg" alt="logo" />
                   <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer border-2 border-transparent hover:border-[#E2E8F0]">
                     <IoIosArrowForward />
                   </div>
@@ -345,7 +345,7 @@ const Home = () => {
                 <div className="absolute inset-0 bg-[linear-gradient(50deg,#E8FF3E,#29FFE2)] opacity-10 rounded-2xl pointer-events-none"></div>
 
                 <div className="relative w-full flex items-center justify-between">
-                  <img src="/img/logo/tdb.svg" alt="logo" />
+                  <img src="/img/logo/upoint.svg" alt="logo" />
                   <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer border-2 border-transparent hover:border-[#E2E8F0]">
                     <IoIosArrowForward />
                   </div>
