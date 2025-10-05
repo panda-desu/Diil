@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   IoIosArrowDown,
   IoIosArrowForward,
@@ -6,6 +6,9 @@ import {
   IoMdHeartEmpty,
 } from "react-icons/io";
 import works from "../json/workplaces.json";
+import jobs from "../json/specialoffers.json";
+import SpecialOffer from "../components/home/SpecialOffer";
+import { CgOptions } from "react-icons/cg";
 
 const EyeIcon = () => (
   <svg
@@ -39,12 +42,44 @@ const LikeButton = ({ initialLiked }) => {
 };
 
 const Home = () => {
-  const [filter, setFilter] = useState("");
+  const [sortedWorks, setSortedWorks] = useState(works);
   const [isAscending, setIsAscending] = useState(true);
+  const [filter, setFilter] = useState("date");
+
+  useEffect(() => {
+    let sorted = [...works];
+
+    if (filter === "date") {
+      sorted.sort((a, b) => {
+        const dateA = new Date(a.createdDate);
+        const dateB = new Date(b.createdDate);
+        return isAscending ? dateB - dateA : dateA - dateB;
+      });
+    }
+
+    if (filter === "salary") {
+      sorted.sort((a, b) => {
+        const salaryA = Number(a.salary);
+        const salaryB = Number(b.salary);
+        return isAscending ? salaryB - salaryA : salaryA - salaryB;
+      });
+    }
+
+    setSortedWorks(sorted);
+  }, [filter, isAscending]);
 
   const handleClick = () => {
-    setFilter("date");
     setIsAscending((prev) => !prev);
+
+    const sorted = [...sortedWorks].sort((a, b) => {
+      const dateA = new Date(a.createdDate);
+      const dateB = new Date(b.createdDate);
+
+      return isAscending ? dateB - dateA : dateA - dateB;
+    });
+
+    setSortedWorks(sorted);
+    setFilter("date");
   };
 
   const getTimeAgo = (dateString) => {
@@ -90,278 +125,312 @@ const Home = () => {
   }
 
   return (
-    <div className="p-6 flex items-center gap-5 h-[calc(100vh-4rem)]">
-      <div className="w-[72%] flex flex-col h-full">
-        <div className="flex items-center justify-between pb-4">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2.5">
-              <button
-                onClick={() => {
-                  setFilter("time");
-                }}
-                className={`text-[#020618] px-4 py-2 rounded-[999px] bg-[#fff] transition-all duration-300 ${
-                  filter === "time"
-                    ? "border-2 border-[#020618]"
-                    : "border border-[#CAD5E2]"
-                } hover:bg-[#E2E8F0]`}
-              >
-                Хугацаагаар
-              </button>
-              <button
-                onClick={() => {
-                  setFilter("salary");
-                }}
-                className={`text-[#020618] px-4 py-2 rounded-[999px] bg-[#fff] transition-all duration-300 ${
-                  filter === "salary"
-                    ? "border-2 border-[#020618]"
-                    : "border border-[#CAD5E2]"
-                } hover:bg-[#E2E8F0]`}
-              >
-                Цалингаар
-              </button>
-            </div>
-            <div className="h-4 w-[1px] bg-[#CAD5E2]" />
-            <div className="flex items-center gap-2.5">
-              <button
-                onClick={() => {
-                  setFilter("activity");
-                }}
-                className={`text-[#020618] px-4 py-2 rounded-[999px] bg-[#fff] flex items-center gap-1.5 transition-all duration-300 ${
-                  filter === "activity"
-                    ? "border-2 border-[#020618]"
-                    : "border border-[#CAD5E2]"
-                } hover:bg-[#E2E8F0]`}
-              >
-                Үйл ажиллагаа <IoIosArrowDown className="text-[16px] mt-1" />
-              </button>
-              <button
-                onClick={() => {
-                  setFilter("culture");
-                }}
-                className={`text-[#020618] px-4 py-2 rounded-[999px] bg-[#fff] flex items-center gap-1.5 transition-all duration-300 ${
-                  filter === "culture"
-                    ? "border-2 border-[#020618]"
-                    : "border border-[#CAD5E2]"
-                } hover:bg-[#E2E8F0]`}
-              >
-                Соёл <IoIosArrowDown className="text-[16px] mt-1" />
-              </button>
-            </div>
-          </div>
-          <div className="flex items-center gap-2.5">
-            <div className="h-4 w-[1px] bg-[#CAD5E2]" />
+    <div className="md:p-6 p-0">
+      <div className="lg:hidden md:block md:mb-8 mb-5 md:p-0 p-4">
+        <h3 className="font-bold text-[#020618]">Онцгой зар</h3>
+
+        {/* Scroll container */}
+        <div className="md:flex md:items-center md:overflow-x-auto md:space-x-4 w-full mt-2 md:scrollbar-hide block md:space-y-0 space-y-3">
+          {jobs.map((job, index) => (
+            <SpecialOffer job={job} key={index} />
+          ))}
+        </div>
+      </div>
+
+      <div className="flex items-center justify-between pb-4 lg:w-[72%] md:w-full  gap-2 md:pb-4 md:pt-0 md:px-0 p-4">
+        <div className="flex items-center gap-3">
+          <div className="flex items-center md:gap-2.5 gap-2">
             <button
-              onClick={handleClick}
-              className={`text-[#020618] px-4 py-2 rounded-[999px] bg-[#fff] flex items-center gap-1.5 transition-all duration-300 ${
-                filter === "date"
-                  ? "border-2 border-[#020618]"
-                  : "border border-[#CAD5E2]"
+              onClick={() => {
+                setFilter("time");
+              }}
+              className={`text-[#020618] lg:px-4 lg:py-2 px-3 py-1.5 rounded-[999px] bg-[#fff] lg:text-base md:text-sm transition-all duration-300 ${
+                filter === "time"
+                  ? "md:border-2 border border-[#020618]"
+                  : "md:border-2 border border-[#CAD5E2]"
               } hover:bg-[#E2E8F0]`}
             >
-              {isAscending ? "Шинэ → Хуучин" : "Шинэ ← Хуучин"}
-              <img src="/img/icon/ascendant.svg" alt="icon" />
+              Хугацаагаар
+            </button>
+            <button
+              onClick={() => {
+                setFilter("salary");
+                setIsAscending((prev) => !prev);
+              }}
+              className={`text-[#020618] lg:px-4 lg:py-2 px-3 py-1.5 rounded-[999px] bg-[#fff] lg:text-base md:text-sm transition-all duration-300 ${
+                filter === "salary"
+                  ? "md:border-2 border border-[#020618]"
+                  : "md:border-2 border border-[#CAD5E2]"
+              } hover:bg-[#E2E8F0]`}
+            >
+              Цалингаар
+            </button>
+          </div>
+          <div className="md:block hidden h-4 w-[1px] bg-[#CAD5E2]" />
+          <div className="md:flex hidden items-center md:gap-2.5 gap-2">
+            <button
+              onClick={() => {
+                setFilter("activity");
+              }}
+              className={`text-[#020618] lg:px-4 lg:py-2 px-3 py-1.5 rounded-[999px] bg-[#fff] lg:text-base md:text-sm flex items-center gap-1.5 transition-all duration-300 ${
+                filter === "activity"
+                  ? "md:border-2 border border-[#020618]"
+                  : "md:border-2 border border-[#CAD5E2]"
+              } hover:bg-[#E2E8F0]`}
+            >
+              Үйл ажиллагаа <IoIosArrowDown className="text-[16px] mt-1" />
+            </button>
+            <button
+              onClick={() => {
+                setFilter("culture");
+              }}
+              className={`text-[#020618] lg:px-4 lg:py-2 md:px-3 md:py-1.5 rounded-[999px] bg-[#fff] lg:text-base md:text-sm flex items-center gap-1.5 transition-all duration-300 ${
+                filter === "culture"
+                  ? "md:border-2 border border-[#020618]"
+                  : "md:border-2 border border-[#CAD5E2]"
+              } hover:bg-[#E2E8F0]`}
+            >
+              Соёл <IoIosArrowDown className="text-[16px] mt-1" />
             </button>
           </div>
         </div>
-        <div className="flex-1 border border-[#CAD5E2] rounded-[24px] overflow-y-auto">
-          {works.map((items, index) => {
-            return (
-              <div
-                key={index}
-                className="w-full py-4 ps-4 pe-2 gap-6 flex justify-between items-center cursor-pointer hover:bg-[#F1F5F9] group"
-              >
-                <div className="flex items-center gap-[13px]">
-                  <img
-                    className="border rounded-full w-8 h-8"
-                    src={items.logo}
-                    alt="logo"
-                  />
-                  <div className="w-[14.5rem]">
-                    <p className="font-bold text-[#020618] truncate">
-                      {items.name}
-                    </p>
-                    <div className="flex items-center gap-3">
-                      <p className="text-[#62748E] text-xs truncate">
-                        {items.companyName}
+        <div className="flex items-center md:gap-2.5 gap-2">
+          <div className="md:block hidden h-4 w-[1px] bg-[#CAD5E2]" />
+          <button
+            onClick={handleClick}
+            className={`text-[#020618] lg:px-4 lg:py-2 md:px-3 md:py-1.5 rounded-[999px] bg-[#fff] lg:text-base md:text-sm md:flex hidden items-center gap-1.5 transition-all duration-300 ${
+              filter === "date"
+                ? "md:border-2 border border-[#020618]"
+                : "md:border-2 border border-[#CAD5E2]"
+            } hover:bg-[#E2E8F0]`}
+          >
+            {isAscending ? "Шинэ → Хуучин" : "Шинэ ← Хуучин"}
+            <img src="/img/icon/ascendant.svg" alt="icon" />
+          </button>
+          <button
+            onClick={() => {
+              setFilter("options");
+            }}
+            className={`text-[#020618] rounded-full bg-[#fff] text-sm md:hidden flex items-center justify-center transition-all duration-300 w-[2.25rem] h-[2.25rem] ${
+              filter === "options"
+                ? "md:border-2 border border-[#020618]"
+                : "md:border-2 border border-[#CAD5E2]"
+            } hover:bg-[#E2E8F0]`}
+          >
+            <CgOptions />
+          </button>
+          <button
+            onClick={handleClick}
+            className={`text-[#020618] rounded-full bg-[#fff] text-sm md:hidden flex items-center justify-center transition-all duration-300 w-[2.25rem] h-[2.25rem] ${
+              filter === "date"
+                ? "md:border-2 border border-[#020618]"
+                : "md:border-2 border border-[#CAD5E2]"
+            } hover:bg-[#E2E8F0]`}
+          >
+            <img src="/img/icon/ascendant.svg" alt="icon" />
+          </button>
+        </div>
+      </div>
+      <div className="lg:flex md:block gap-5  lg:h-[calc(100vh-11rem)]">
+        <div className="lg:w-[72%] w-full md:flex hidden flex-col lg:h-full h-[70vh] lg:mb-0 md:mb-4">
+          <div className="flex-1 border border-[#CAD5E2] rounded-[24px] overflow-y-auto">
+            {sortedWorks.map((items, index) => {
+              return (
+                <div
+                  key={index}
+                  className="w-full py-4 ps-4 pe-2 gap-6 flex justify-between items-center cursor-pointer hover:bg-[#F1F5F9] group"
+                >
+                  <div className="flex items-center gap-[13px]">
+                    <img
+                      className="border rounded-full w-8 h-8"
+                      src={items.logo}
+                      alt="logo"
+                    />
+                    <div className="lg:w-[14.5rem] w-[16rem]">
+                      <p className="font-bold text-[#020618] truncate">
+                        {items.name}
                       </p>
-                      <p className="text-[#62748E] text-xs">
-                        {getTimeAgo(items.createdDate)}
-                      </p>
+                      <div className="flex items-center gap-3">
+                        <p className="text-[#62748E] text-xs truncate max-w-[32%]">
+                          {items.companyName}
+                        </p>
+                        <p className="text-[#62748E] text-xs">
+                          {getTimeAgo(items.createdDate)}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <p className="text-[#62748E] text-xs w-[10.25rem] truncate">
-                  {items.location}
-                </p>
-                <p className="text-sm font-bold text-[#020618]">
-                  {formatSalary(items.salary)}
-                </p>
+                  <p className="text-[#62748E] text-xs w-[10.25rem] truncate hidden lg:block">
+                    {items.location}
+                  </p>
+                  <p className="text-sm font-bold text-[#020618]">
+                    {formatSalary(items.salary)}
+                  </p>
 
-                {/* Buttons */}
-                <div className="flex items-center gap-2">
-                  {/* Like button */}
-                  <LikeButton initialLiked={items.isLiked} />
+                  {/* Buttons */}
+                  <div className="flex items-center gap-2">
+                    {/* Like button */}
+                    <LikeButton initialLiked={items.isLiked} />
 
-                  {/* Ярилцлага button */}
-                  <button
-                    className="group relative rounded-[99px] pe-1 ps-2.5 py-1 flex items-center gap-2 
+                    {/* Ярилцлага button */}
+                    <button
+                      className="group relative rounded-[99px] pe-1 ps-2.5 py-1 flex items-center gap-2 
                            bg-transparent text-[#020618] 
                            hover:bg-[#29EAFF] hover:text-[#0F172B]
                            group-hover:bg-[#020618] group-hover:text-white
                            transition-colors duration-300"
-                  >
-                    Ярилцлага
-                    <div
-                      className="w-[2rem] h-[2rem] rounded-full flex items-center justify-center 
+                    >
+                      Ярилцлага
+                      <div
+                        className="w-[2rem] h-[2rem] rounded-full flex items-center justify-center 
                           bg-transparent text-[#020618] 
                           group-hover:bg-[#1D293D] group-hover:text-white 
                           transition-colors duration-300"
-                    >
-                      <IoIosArrowForward className="text-sm" />
-                    </div>
-                  </button>
+                      >
+                        <IoIosArrowForward className="text-sm" />
+                      </div>
+                    </button>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-      <div className="w-[28%] flex flex-col h-full">
-        <div className="space-y-4 mt-[3.2rem]">
-          {/* Top Two Cards */}
-          <div className="flex items-center justify-between gap-2.5">
-            {/* Card 1 */}
-            <div className="bg-[#F1F5F9] rounded-[24px] p-4 gap-6 w-[50%] h-[9.2rem]">
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-10 h-10 bg-[#fff] rounded-full flex items-center justify-center ">
-                  <EyeIcon className="text-[24px]" />
-                </div>
-                <IoIosArrowForward className="text-[18px]" />
-              </div>
-              <h2 className="font-bold text-[#020618] mb-2">0 Үзэлт</h2>
-              <p className="text-[#62748E] text-xs">
-                Таныг сонирхосон компаниуд
-              </p>
-            </div>
-
-            {/* Card 2 */}
-            <div className="bg-[#F1F5F9] rounded-[24px] p-4 gap-6 w-[50%] h-[9.2rem]">
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-10 h-10 bg-[#fff] rounded-full flex items-center justify-center ">
-                  <EyeIcon className="text-[24px]" />
-                </div>
-                <IoIosArrowForward className="text-[18px]" />
-              </div>
-              <h2 className="font-bold text-[#020618] mb-2">0 Ярилцсан</h2>
-              <p className="text-[#62748E] text-[11px]">
-                Work DNA тэй ярилцсан компаниуд
-              </p>
-            </div>
+              );
+            })}
           </div>
-
-          <div className="relative rounded-3xl p-[3px] bg-[linear-gradient(40deg,#4342FF,#FF6829)] bg-opacity-10">
-            <div className="relative rounded-[22px] bg-white p-4 overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#4342FF] to-[#FF6829] opacity-10"></div>
-              <div className="relative">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-10 h-10 bg-[#4258FF] flex items-center justify-center rounded-full">
-                    <img src="/img/icon/star.svg" alt="star" />
-                  </div>
-                  <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer border-2 border-transparent hover:border-[#E2E8F0]">
-                    <IoIosArrowForward />
-                  </div>
+        </div>
+        <div className="block md:hidden w-full h-[70vh] overflow-y-auto">
+          {sortedWorks.map((items, index) => (
+            <div className="p-4 border-b border-[#CAD5E2]" key={index}>
+              <div className="flex items-center justify-between">
+                <div className="w-9 h-9 rounded-full border border-[#CAD5E2]">
+                  <img
+                    className="w-full h-full object-contain"
+                    src={items.logo}
+                    alt="logo"
+                  />
                 </div>
-                <h2 className="font-bold text-[#020618] mb-4">
-                  Work DNA Тодорхойлох
-                </h2>
-                <p className="text-[#020618] text-xs mb-8">
-                  Таны ажилтны ялгарлыг тодорхойлж өмнөөс тань ажлын ярилцлаганд
-                  ордог Work DNA
+                <div className="flex items-center gap-2">
+                  <p className="text-[#020618] text-sm font-bold">
+                    {formatSalary(items.salary)}
+                  </p>
+                  <LikeButton initialLiked={items.isLiked} />
+                </div>
+              </div>
+              <div className="mt-3">
+                <p className="font-bold text-[#020618] w-[80%] truncate">
+                  {items.name}
                 </p>
-                <button className="text-sm group py-1 pe-1 ps-6 gap-3 flex items-center bg-[#020618] rounded-[99px] text-[#fff] hover:bg-[#29EAFF] hover:text-[#0F172B] transition-all duration-300">
-                  CV Бүтээх
-                  <div className="bg-[#1D293D] h-[32px] w-[32px] rounded-full flex items-center justify-center ">
-                    <IoIosArrowForward className="text-[16px] group-hover:text-[#29EAFF]" />
+                <div className="flex items-center gap-3">
+                  <p className="text-[#62748E] text-xs truncate max-w-[20%]">
+                    {items.companyName}
+                  </p>
+                  <p className="text-[#62748E] text-xs">
+                    {getTimeAgo(items.createdDate)}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-end justify-between mt-2">
+                <p className="text-[#62748E] text-xs w-[10.25rem] truncate">
+                  {items.location}
+                </p>
+                <button
+                  className="group relative rounded-[99px] pe-1 ps-2.5 py-1 flex items-center gap-2 
+                           bg-[#E2E8F0] text-[#020618] 
+                           hover:bg-[#29EAFF] hover:text-[#0F172B]
+                           group-hover:bg-[#020618] group-hover:text-white
+                           transition-colors duration-300"
+                >
+                  Ярилцлага
+                  <div
+                    className="w-[2rem] h-[2rem] rounded-full flex items-center justify-center 
+                          bg-[#fff] text-[#020618] 
+                          group-hover:bg-[#1D293D] group-hover:text-white 
+                          transition-colors duration-300"
+                  >
+                    <IoIosArrowForward className="text-sm" />
                   </div>
                 </button>
               </div>
             </div>
-          </div>
-
-          {/* Section Title */}
-          <h3 className="mt-8 font-bold text-[#020618] ">Онцгой зар</h3>
-          <div className="h-[20%] overflow-y-scroll flex flex-col items-center gap-4">
-            <div className=" w-full relative rounded-2xl p-[2px] bg-[linear-gradient(50deg,#FF4D29,#FFE83E)]">
-              <div className="relative rounded-2xl bg-white p-2.5">
-                <div className="absolute inset-0 bg-[linear-gradient(50deg,#FF6829,#FFE83E)] opacity-10 rounded-2xl pointer-events-none"></div>
-
-                <div className="relative w-full flex items-center justify-between">
-                  <img src="/img/logo/xac.svg" alt="logo" />
-                  <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer border-2 border-transparent hover:border-[#E2E8F0]">
-                    <IoIosArrowForward />
+          ))}
+        </div>
+        <div className="lg:w-[28%] w-full md:flex hidden flex-col h-full ">
+          <div className="flex-1">
+            <div className="flex lg:flex-col md:flex-row md:gap-[14px] lg:gap-4 lg:h-auto md:h-[211px] lg:mb-4 md:mb-0">
+              {/* Top Two Cards */}
+              <div className="flex items-center justify-between lg:gap-2.5 md:gap-[14px]">
+                {/* Card 1 */}
+                <div className="bg-[#F1F5F9] rounded-[24px] p-4 gap-6 w-[50%] lg:h-[9.2rem] h-full flex flex-col justify-between">
+                  <div className="flex items-center justify-between">
+                    <div className="w-10 h-10 bg-[#fff] rounded-full flex items-center justify-center ">
+                      <EyeIcon className="text-[24px]" />
+                    </div>
+                    <IoIosArrowForward className="text-[18px] cursor-pointer" />
+                  </div>
+                  <div>
+                    <h2 className="font-bold text-[#020618] mb-2">0 Үзэлт</h2>
+                    <p className="text-[#62748E] text-xs">
+                      Таныг сонирхсон компаниуд
+                    </p>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between mt-4">
-                  <p className="font-bold text-[#020618]">
-                    Front-end developer
-                  </p>
-                  <p className="font-bold text-[#020618]">2.5 Сая ₮</p>
+                {/* Card 2 */}
+                <div className="bg-[#F1F5F9] rounded-[24px] p-4 gap-6 w-[50%] lg:h-[9.2rem] h-full flex flex-col justify-between">
+                  <div className="flex items-center justify-between">
+                    <div className="w-10 h-10 bg-[#fff] rounded-full flex items-center justify-center ">
+                      <EyeIcon className="text-[24px]" />
+                    </div>
+                    <IoIosArrowForward className="text-[18px] cursor-pointer" />
+                  </div>
+                  <div>
+                    <h2 className="font-bold text-[#020618] mb-2">
+                      0 Ярилцсан
+                    </h2>
+                    <p className="text-[#62748E] text-[11px]">
+                      Work DNA тэй ярилцсан компаниуд
+                    </p>
+                  </div>
                 </div>
+              </div>
 
-                <div className="flex items-center gap-3 mt-2">
-                  <p className="text-[#020618] text-sm">Toki</p>
-                  <p className="text-[#020618] text-sm">2 өдрийн өмнө</p>
+              {/* Top One Cards */}
+              <div className="relative rounded-3xl p-[3px] bg-[linear-gradient(40deg,#4342FF,#FF6829)] bg-opacity-10">
+                <div className="relative rounded-[22px] bg-white p-3 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#4342FF] to-[#FF6829] opacity-10"></div>
+                  <div className="relative">
+                    <div className="flex items-center justify-between lg:mb-6 mb-3">
+                      <div className="w-10 h-10 bg-[#4258FF] flex items-center justify-center rounded-full">
+                        <img src="/img/icon/star.svg" alt="star" />
+                      </div>
+                      <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer border-2 border-transparent hover:border-[#E2E8F0]">
+                        <IoIosArrowForward />
+                      </div>
+                    </div>
+                    <h2 className="font-bold text-[#020618] lg:mb-3 md:mb-[9px]">
+                      Work DNA Тодорхойлох
+                    </h2>
+                    <p className="text-[#020618] text-xs mb-6">
+                      Таны ажилтны ялгарлыг тодорхойлж өмнөөс тань ажлын
+                      ярилцлаганд ордог Work DNA
+                    </p>
+                    <button className="text-sm group py-1 pe-1 ps-6 gap-3 flex items-center bg-[#020618] rounded-[99px] text-[#fff] hover:bg-[#29EAFF] hover:text-[#0F172B] transition-all duration-300 lg:text-base md:text-md">
+                      Эхлүүлэх
+                      <div className="bg-[#1D293D] h-[32px] w-[32px] rounded-full flex items-center justify-center ">
+                        <IoIosArrowForward className="text-[16px] group-hover:text-[#29EAFF] group-transition-all group-duration-300" />
+                      </div>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className=" w-full relative rounded-2xl p-[2px] bg-[linear-gradient(50deg,#29EAFF,#4258FF)]">
-              <div className="relative rounded-2xl bg-white p-2.5">
-                <div className="absolute inset-0 bg-[linear-gradient(50deg,#29FFE2,#4258FF)] opacity-10 rounded-2xl pointer-events-none"></div>
 
-                <div className="relative w-full flex items-center justify-between">
-                  <img src="/img/logo/tdb.svg" alt="logo" />
-                  <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer border-2 border-transparent hover:border-[#E2E8F0]">
-                    <IoIosArrowForward />
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between mt-4">
-                  <p className="font-bold text-[#020618]">
-                    Front-end developer
-                  </p>
-                  <p className="font-bold text-[#020618]">2.5 Сая ₮</p>
-                </div>
-
-                <div className="flex items-center gap-3 mt-2">
-                  <p className="text-[#020618] text-sm">Toki</p>
-                  <p className="text-[#020618] text-sm">2 өдрийн өмнө</p>
-                </div>
-              </div>
-            </div>
-            <div className=" w-full relative rounded-2xl p-[2px] bg-[linear-gradient(50deg,#FFE83E,#29EAFF)]">
-              <div className="relative rounded-2xl bg-white p-2.5">
-                <div className="absolute inset-0 bg-[linear-gradient(50deg,#E8FF3E,#29FFE2)] opacity-10 rounded-2xl pointer-events-none"></div>
-
-                <div className="relative w-full flex items-center justify-between">
-                  <img src="/img/logo/upoint.svg" alt="logo" />
-                  <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer border-2 border-transparent hover:border-[#E2E8F0]">
-                    <IoIosArrowForward />
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between mt-4">
-                  <p className="font-bold text-[#020618]">
-                    Front-end developer
-                  </p>
-                  <p className="font-bold text-[#020618]">2.5 Сая ₮</p>
-                </div>
-
-                <div className="flex items-center gap-3 mt-2">
-                  <p className="text-[#020618] text-sm">Toki</p>
-                  <p className="text-[#020618] text-sm">2 өдрийн өмнө</p>
-                </div>
+            {/* Section Title */}
+            <div className="lg:block md:hidden">
+              <h3 className="font-bold text-[#020618] ">Онцгой зар</h3>
+              <div className="flex-1 overflow-y-auto gap-4 mt-2 space-y-4 min-h-[300px]">
+                {jobs.map((job, index) => (
+                  <SpecialOffer job={job} key={index} />
+                ))}
               </div>
             </div>
           </div>

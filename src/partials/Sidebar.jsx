@@ -12,7 +12,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`px-[16px] py-[20px] border-r border-[#CAD5E2] h-screen flex flex-col justify-between transition-all duration-300 ${
+      className={`px-[16px] py-[20px] border-r border-[#CAD5E2] h-screen flex flex-col justify-between transition-all duration-300 bg-[#fff] ${
         sidebar ? "w-[14.75rem]" : "w-[5rem]"
       }`}
     >
@@ -37,7 +37,7 @@ const Sidebar = () => {
               !sidebar && "hidden"
             }`}
           >
-            <RxDoubleArrowLeft className="text-[24px]" />
+            <RxDoubleArrowLeft className="text-[24px] md:rotate-180 lg:rotate-0" />
           </button>
         </div>
 

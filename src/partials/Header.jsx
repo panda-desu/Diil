@@ -1,14 +1,14 @@
 import React from "react";
 import { useSidebar } from "../context/SidebarContext";
 import { RxDoubleArrowRight } from "react-icons/rx";
-import { FiArrowUpRight } from "react-icons/fi";
+import { FiArrowUpRight, FiMenu } from "react-icons/fi";
 
 function ExpandingSearch() {
   return (
     <div className="flex items-center ">
       <div className="relative group">
-        <div className="flex items-center bg-[#F1F5F9] rounded-full shadow-md transition-all duration-300 w-[20rem] h-[3rem] group-hover:w-[26.25rem] p-1">
-          <div className="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-[#fff] rounded-full cursor-pointer">
+        <div className="flex items-center bg-[#F1F5F9] rounded-full shadow-md transition-all duration-300 md:w-[20rem] w-[13rem] h-[3rem] md:group-hover:w-[26.25rem] p-1">
+          <div className="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-[#fff] rounded-full cursor-pointer ">
             <svg
               className="w-[1.5rem] h-[1.5rem] text-[#020618]"
               fill="none"
@@ -27,7 +27,7 @@ function ExpandingSearch() {
           <input
             type="text"
             placeholder="Хайх"
-            className="flex-1 bg-transparent outline-none text-[#020618] pr-6 text-center text-[16px]"
+            className="flex-1 bg-transparent outline-none text-[#020618] md:pr-10 md:ps-2 pr-4 ps-2 text-center md:text-[16px] text-sm w-[80%]"
           />
         </div>
       </div>
@@ -39,23 +39,41 @@ const Header = () => {
   const { sidebar, setSidebar } = useSidebar();
 
   return (
-    <div className="w-full h-[4rem] flex items-center justify-between py-2 ps-2 pe-6">
+    <div className="w-full h-[4rem] flex items-center justify-between py-2 md:ps-2 md:pe-6 pe-2">
       <button
         onClick={() => setSidebar(!sidebar)}
         disabled={sidebar}
-        className={`w-[40px] h-[40px] p-2 rounded-full border-[3px] border-transparent hover:border-[#E2E8F0] flex items-center justify-center transition-all duration-300 ${
+        className={`w-[40px] h-[40px] p-2 rounded-full border-[3px] border-transparent hover:border-[#E2E8F0] lg:flex hidden items-center justify-center transition-all duration-300 ${
           sidebar && "opacity-0"
         }`}
       >
         <RxDoubleArrowRight className="text-[24px]" />
       </button>
+      <img
+        className="lg:hidden md:block hidden"
+        src="/img/logo/logo.svg"
+        alt="logo"
+      />
+      <img className="md:hidden block" src="/img/logo/logoc.svg" alt="logo" />
       <ExpandingSearch />
-      <button className="group py-1 pe-1 ps-6 gap-3 flex items-center bg-[#020618] rounded-[99px] text-[#fff] hover:bg-[#29EAFF] hover:text-[#0F172B]">
+      <button className="group py-1 pe-1 ps-6 gap-3 lg:flex hidden items-center bg-[#020618] rounded-[99px] text-[#fff] hover:bg-[#29EAFF] hover:text-[#0F172B]">
         CV Бүтээх
         <div className="bg-[#1D293D] h-[40px] w-[40px] rounded-full flex items-center justify-center ">
           <FiArrowUpRight className="text-[24px] group-hover:text-[#29EAFF]" />
         </div>
       </button>
+      <div className="flex lg:hidden items-center gap-2">
+        {" "}
+        <button className="p-2 flex items-center justify-center rounded-full border-2 border-transparent hover:border-[#E2E8F0]">
+          <img src="/img/icon/user.svg" alt="user" />
+        </button>
+        <button
+          onClick={() => setSidebar(!sidebar)}
+          className="p-2 flex items-center justify-center rounded-full border-2 border-transparent hover:border-[#E2E8F0]"
+        >
+          <FiMenu className="text-[20px]" />
+        </button>
+      </div>
     </div>
   );
 };

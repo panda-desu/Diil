@@ -1,0 +1,29 @@
+[
+  {
+    "logo": "/img/logo/xac.svg",
+    "title": "Front-end developer",
+    "salary": "2.5 Сая ₮",
+    "company": "Toki",
+    "date": "2 өдрийн өмнө",
+    "gradientMain": "linear-gradient(50deg,#FF4D29,#FFE83E)",
+    "gradientOverlay": "linear-gradient(50deg,#FF6829,#FFE83E)"
+  },
+  {
+    "logo": "/img/logo/tdb.svg",
+    "title": "Front-end developer",
+    "salary": "2.5 Сая ₮",
+    "company": "Toki",
+    "date": "2 өдрийн өмнө",
+    "gradientMain": "linear-gradient(50deg,#29EAFF,#4258FF)",
+    "gradientOverlay": "linear-gradient(50deg,#29FFE2,#4258FF)"
+  },
+  {
+    "logo": "/img/logo/upoint.svg",
+    "title": "Front-end developer",
+    "salary": "2.5 Сая ₮",
+    "company": "Toki",
+    "date": "2 өдрийн өмнө",
+    "gradientMain": "linear-gradient(50deg,#FFE83E,#29EAFF)",
+    "gradientOverlay": "linear-gradient(50deg,#E8FF3E,#29FFE2)"
+  }
+]
