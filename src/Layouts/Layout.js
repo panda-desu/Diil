@@ -23,7 +23,7 @@ const Layout = () => {
   const hideHeader = isMobile && location.pathname.startsWith("/chat");
 
   return (
-    <div className="flex w-full overflow-hidden min-h-screen">
+    <div className="flex w-full overflow-hidden min-h-[calc(var(--vh,1vh)*100)]">
       {/* Desktop Sidebar - fixed on left */}
       <aside
         className={`hidden lg:block fixed left-0 top-0 h-screen transition-all duration-300 z-30 ${
