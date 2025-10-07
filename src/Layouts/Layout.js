@@ -1,11 +1,26 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import Header from "../partials/Header";
 import Sidebar from "../partials/Sidebar";
 import { useSidebar } from "../context/SidebarContext";
 
 const Layout = () => {
   const { sidebar, setSidebar } = useSidebar();
+  const location = useLocation();
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Track screen size
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // phone/tablet
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Determine if header should be hidden
+  const hideHeader = isMobile && location.pathname.startsWith("/chat");
 
   return (
     <div className="flex w-full overflow-hidden min-h-screen">
@@ -41,7 +56,9 @@ const Layout = () => {
           sidebar ? "lg:ml-[14.75rem]" : "lg:ml-[5rem]"
         }`}
       >
-        <Header />
+        {/* Header will hide if on chat page on phone */}
+        {!hideHeader && <Header />}
+
         <main>
           <Outlet />
         </main>

@@ -34,9 +34,9 @@ const LikeButton = ({ initialLiked }) => {
       onClick={() => setIsLiked((prev) => !prev)}
     >
       {isLiked ? (
-        <IoMdHeart size={16} className="text-red-500" />
+        <IoMdHeart className="text-red-500 lg:text-base text-2xl" />
       ) : (
-        <IoMdHeartEmpty size={16} className="text-[#020618]" />
+        <IoMdHeartEmpty className="text-[#020618] lg:text-base text-2xl" />
       )}
     </button>
   );
@@ -128,6 +128,7 @@ const Home = () => {
 
   return (
     <div className="md:p-6 p-0">
+      {/* Tablet and phone ontsgoi zar*/}
       <div className="lg:hidden md:block md:mb-8 mb-5 md:p-0 p-4">
         <h3 className="font-bold text-[#020618]">Онцгой зар</h3>
 
@@ -139,7 +140,9 @@ const Home = () => {
         </div>
       </div>
 
+      {/* filter */}
       <div className="flex items-center justify-between pb-4 lg:w-[72%] md:w-full  gap-2 md:pb-4 md:pt-0 md:px-0 p-4">
+        {/* front 3 filter */}
         <div className="flex items-center gap-3">
           <div className="flex items-center md:gap-2.5 gap-2">
             <button
@@ -196,6 +199,8 @@ const Home = () => {
             </button>
           </div>
         </div>
+
+        {/* last filters */}
         <div className="flex items-center md:gap-2.5 gap-2">
           <div className="md:block hidden h-4 w-[1px] bg-[#CAD5E2]" />
           <button
@@ -233,16 +238,16 @@ const Home = () => {
           </button>
         </div>
       </div>
+
+      {/* Main content */}
       <div className="lg:flex md:block gap-5  lg:h-[calc(100vh-11rem)]">
+        {/* desktop tablet table */}
         <div className="lg:w-[72%] w-full md:flex hidden flex-col lg:h-full h-[70vh] lg:mb-0 md:mb-4">
           <div className="flex-1 border border-[#CAD5E2] rounded-[24px] overflow-y-auto">
             {sortedWorks.map((items, index) => {
               return (
                 <div
                   key={index}
-                  onClick={() => {
-                    navigate("/chat");
-                  }}
                   className="w-full py-4 ps-4 pe-2 gap-6 flex justify-between items-center cursor-pointer hover:bg-[#F1F5F9] group"
                 >
                   <div className="flex items-center gap-[13px]">
@@ -280,6 +285,9 @@ const Home = () => {
 
                     {/* Ярилцлага button */}
                     <button
+                      onClick={() => {
+                        navigate("/chat");
+                      }}
                       className="group relative rounded-[99px] pe-1 ps-2.5 py-1 flex items-center gap-2 
                            bg-transparent text-[#020618] 
                            hover:bg-[#29EAFF] hover:text-[#0F172B]
@@ -302,6 +310,7 @@ const Home = () => {
             })}
           </div>
         </div>
+        {/* phone table */}
         <div className="block md:hidden w-full h-[70vh] overflow-y-auto">
           {sortedWorks.map((items, index) => (
             <div className="p-4 border-b border-[#CAD5E2]" key={index}>
@@ -338,6 +347,9 @@ const Home = () => {
                   {items.location}
                 </p>
                 <button
+                  onClick={() => {
+                    navigate("/chat");
+                  }}
                   className="group relative rounded-[99px] pe-1 ps-2.5 py-1 flex items-center gap-2 
                            bg-[#E2E8F0] text-[#020618] 
                            hover:bg-[#29EAFF] hover:text-[#0F172B]
@@ -358,6 +370,8 @@ const Home = () => {
             </div>
           ))}
         </div>
+
+        {/* desktop left side */}
         <div className="lg:w-[28%] w-full md:flex hidden flex-col h-full ">
           <div className="flex-1">
             <div className="flex lg:flex-col md:flex-row md:gap-[14px] lg:gap-4 lg:h-auto md:h-[211px] lg:mb-4 md:mb-0">

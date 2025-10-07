@@ -1,5 +1,7 @@
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 import { useState } from "react";
+import { FiArrowLeft } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 function formatSalary(salary) {
   if (salary >= 1_000_000) {
@@ -31,35 +33,63 @@ const LikeButton = ({ initialLiked }) => {
 };
 
 export default function ChatHeader({ currentChat }) {
+  const navigate = useNavigate();
   if (!currentChat) return null;
 
   return (
-    <div className="flex items-center justify-between px-4 py-3 border-y bg-white">
-      <div className="flex items-center gap-4 w-[65%]">
-        <div className="rounded-full w-[50px] h-[50px] border">
-          <img
-            src={currentChat.avatar}
-            alt="avatar"
-            className="w-full h-full rounded-full object-fill"
-          />
-        </div>
-        <div className="w-[90%]">
-          <p className="font-bold  text-[#020618] text-lg w-full truncate">
-            {currentChat.name}
-          </p>
-          <div className="flex items-center gap-4">
-            <p className="text-sm text-[#62748E] truncate max-w-[70%]">
-              {currentChat.companyName}
-            </p>
-            <p className="text-sm text-[#62748E]">{currentChat.time}</p>
+    <div className="flex flex-col">
+      <div className="flex items-center gap-2 md:px-4 px-1 py-3 border-y border-[#CAD5E2] bg-white ">
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+          className={`w-[40px] h-[40px] p-2 rounded-full border-[3px] border-transparent hover:border-[#E2E8F0] lg:hidden flex items-center justify-center transition-all duration-300 `}
+        >
+          <FiArrowLeft className="text-[28px]" />
+        </button>
+        <div className="flex items-center justify-between w-full">
+          <div className="flex items-center gap-2 ">
+            <div className="flex items-center gap-4">
+              <div className="rounded-full md:w-[50px] md:h-[50px] w-[40px] h-[40px] border">
+                <img
+                  src={currentChat.avatar}
+                  alt="avatar"
+                  className="w-full h-full rounded-full object-fill"
+                />
+              </div>
+              <div className="min-w-[60%]">
+                <p className="font-bold  text-[#020618] md:text-lg text-sm truncate md:max-w-[28rem] max-w-[11rem] ">
+                  {currentChat.name}
+                </p>
+                <div className=" items-center gap-4 hidden md:flex">
+                  <p className="text-sm text-[#62748E] truncate max-w-[14rem]">
+                    {currentChat.companyName}
+                  </p>
+                  <p className="text-sm text-[#62748E]">{currentChat.time}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="flex items-center gap-4">
+              <p className="text-lg text-[#020618] hidden md:block font-bold">
+                {formatSalary(currentChat.salary)}
+              </p>
+              <LikeButton />
+            </div>
           </div>
         </div>
       </div>
-      <div className="flex items-center gap-4">
-        <p className="text-lg text-[#020618] font-bold">
+      <div className="w-full bg-[#fff] border-b border-[#CAD5E2] py-3 px-4 flex md:hidden justify-between items-end">
+        <div>
+          <p className="text-xs text-[#62748E]">{currentChat.time}</p>
+          <p className="text-sm text-[#020618] font-bold truncate max-w-[14rem]">
+            {currentChat.companyName}
+          </p>
+        </div>
+        <p className="text-sm text-[#020618] font-bold">
           {formatSalary(currentChat.salary)}
         </p>
-        <LikeButton />
       </div>
     </div>
   );

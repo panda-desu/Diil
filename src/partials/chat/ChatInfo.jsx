@@ -2,8 +2,8 @@ export default function ChatInfo({ currentChat }) {
   if (!currentChat) return null;
 
   return (
-    <div className="w-[21vw] bg-white border-l border-t border-[#CAD5E2] py-5 px-4 overflow-y-scroll h-full">
-      <div className="mb-6">
+    <div className="lg:w-[21vw] w-full lg:border-l lg:border-t border-[#CAD5E2] py-5 px-4 overflow-y-scroll h-full lg:bg-[#fff] bg-[#F1F5F9] lg:pt-4 md:pt-16 pt-14">
+      <div className="lgmb-6 mb-4 lg:bg-transparent bg-[#fff] lg:p-0 p-4 lg:rounded-none rounded-[16px]">
         <p className="text-xs text-[#62748E] mb-4">Ажлын газрын мэдээлэл</p>
         <div className="space-y-4 w-full">
           <div className="flex items-center gap-3">
@@ -51,11 +51,11 @@ export default function ChatInfo({ currentChat }) {
             ))}
         </div>
       </div>
-      <div className="mb-6">
+      <div className="lgmb-6 mb-4 lg:bg-transparent bg-[#fff] lg:p-0 p-4 lg:rounded-none rounded-[16px]">
         <p className="text-xs text-[#62748E] mb-4">Тавигдах шаардлага</p>
         <p className="text-[#020618] text-sm">{currentChat.requirements}</p>
       </div>
-      <div className="mb-6">
+      <div className="lgmb-6 mb-4 lg:bg-transparent bg-[#fff] lg:p-0 p-4 lg:rounded-none rounded-[16px]">
         <p className="text-xs text-[#62748E] mb-4">Холбогдох мэдээлэл</p>
         <div className="space-y-4 w-full">
           <div className="flex items-center gap-3">

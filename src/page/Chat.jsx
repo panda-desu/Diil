@@ -25,7 +25,6 @@ export default function Chat() {
   const handleSend = () => {
     if (!input.trim()) return;
 
-    // Add 'me' message
     const newMessage = {
       sender: "me",
       text: input,
@@ -35,10 +34,8 @@ export default function Chat() {
       }),
     };
     setMessages((prev) => [...prev, newMessage]);
-
     setInput("");
 
-    // Auto-reply after 500ms
     setTimeout(() => {
       const reply = {
         sender: "other",
@@ -61,10 +58,11 @@ export default function Chat() {
   if (!currentChat) return <div>Loading...</div>;
 
   return (
-    <div className="bg-[#F1F5F9] w-full h-full flex flex-col">
+    <div className="relative w-full h-full bg-[#F1F5F9] flex flex-col">
+      {/* Messages */}
       <div
         ref={scrollRef}
-        className="flex-1 overflow-y-auto space-y-4 mb-4 p-4"
+        className="flex-1 overflow-y-auto space-y-4 p-4 pb-24 md:pt-20 pt-14 lg:pt-4"
       >
         {messages.map((msg, index) => (
           <div
@@ -74,7 +72,7 @@ export default function Chat() {
             }`}
           >
             {msg.sender === "other" && (
-              <div className="w-10 h-10 rounded-full mr-2">
+              <div className="md:w-10 md:h-10 w-8 h-8 rounded-full mr-2">
                 <img
                   className="rounded-full object-fill"
                   src={currentChat.avatar}
@@ -86,15 +84,15 @@ export default function Chat() {
             <div
               className={`max-w-[60%] p-3 rounded-[24px] ${
                 msg.sender === "me"
-                  ? "bg-[#4258FF] text-white "
-                  : "bg-white text-[#020618] "
+                  ? "bg-[#4258FF] text-white"
+                  : "bg-white text-[#020618]"
               } shadow`}
             >
-              <p>{msg.text}</p>
+              <p className="md:text-base text-sm">{msg.text}</p>
             </div>
 
             {msg.sender === "me" && (
-              <div className="w-10 h-10 rounded-full ml-2">
+              <div className="md:w-10 md:h-10 w-8 h-8 rounded-full ml-2">
                 <img
                   className="rounded-full object-fill"
                   src={myAvatar}
@@ -106,28 +104,30 @@ export default function Chat() {
         ))}
       </div>
 
-      {/* Input box */}
-      <div className="flex justify-center mb-4">
-        <div className="flex items-center w-[320px] rounded-[99px] bg-white p-1 transition-all duration-300 hover:w-[420px] focus-within:w-[420px]">
-          <button className="h-10 w-10 bg-[#E2E8F0] rounded-full flex items-center justify-center text-[#020618]">
-            <img src="/icon/chat/voice.svg" alt="icon" />
-          </button>
+      {/* Input box fixed at bottom */}
+      <div className="absolute bottom-0 left-0 w-full p-4 ">
+        <div className="flex justify-center">
+          <div className="flex items-center lg:w-[320px] rounded-[99px] bg-white p-1 transition-all duration-300 w-[90vw] lg:hover:w-[420px] lg:focus-within:w-[420px]">
+            <button className="h-10 w-10 bg-[#E2E8F0] rounded-full flex items-center justify-center text-[#020618]">
+              <img src="/icon/chat/voice.svg" alt="icon" />
+            </button>
 
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyPress}
-            placeholder="Type your message..."
-            className="flex-1 px-2 mx-2 rounded-lg focus:outline-none"
-          />
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyPress}
+              placeholder="Type your message..."
+              className="flex-1 px-2 mx-2 rounded-lg focus:outline-none"
+            />
 
-          <button
-            onClick={handleSend}
-            className="h-10 w-10 bg-[#4258FF] rounded-full flex items-center justify-center text-white"
-          >
-            <img src="/icon/chat/send.svg" alt="icon" />
-          </button>
+            <button
+              onClick={handleSend}
+              className="h-10 w-10 bg-[#4258FF] rounded-full flex items-center justify-center text-white"
+            >
+              <img src="/icon/chat/send.svg" alt="icon" />
+            </button>
+          </div>
         </div>
       </div>
     </div>

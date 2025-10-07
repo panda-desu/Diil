@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RxDoubleArrowLeft, RxEnvelopeClosed } from "react-icons/rx";
 import sidebars from "../json/sidebar.json";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSidebar } from "../context/SidebarContext";
 import { PiWarningOctagon } from "react-icons/pi";
 
@@ -9,6 +9,14 @@ const Sidebar = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const { sidebar, setSidebar } = useSidebar();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const current = sidebars.find((item) => location.pathname === item.link);
+    if (current) {
+      setSelectedMenu(current.id);
+    }
+  }, [location.pathname]);
 
   return (
     <div

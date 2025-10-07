@@ -6,6 +6,7 @@ import Layout from "./Layouts/Layout";
 import Home from "./page/Home";
 import ChatLayout from "./Layouts/ChatLayout";
 import Chat from "./page/Chat";
+import Companies from "./page/Companies";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
                 <Route path="chat" element={<ChatLayout />}>
                   <Route index element={<Chat />} />
                 </Route>
+
+                <Route path="/companies" element={<Companies />} />
               </Route>
             </Routes>
           </Router>

@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "name": "Ferrari",
+    "category": "Банк, Санхүү",
+    "jobs": 45,
+    "logo": "https://upload.wikimedia.org/wikipedia/en/3/3d/Ferrari-Logo.svg"
+  },
+  {
+    "id": 2,
+    "name": "Louis Vuitton",
+    "category": "Банк, Санхүү",
+    "jobs": 45,
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/7/76/Louis_Vuitton_logo_and_wordmark.svg"
+  },
+  {
+    "id": 3,
+    "name": "Starbucks",
+    "category": "Банк, Санхүү",
+    "jobs": 45,
+    "logo": "https://upload.wikimedia.org/wikipedia/sco/4/45/Starbucks_Corporation_Logo_2011.svg"
+  },
+  {
+    "id": 4,
+    "name": "Apple",
+    "category": "Банк, Санхүү",
+    "jobs": 45,
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+  },
+  {
+    "id": 5,
+    "name": "Bank of America",
+    "category": "Банк, Санхүү",
+    "jobs": 45,
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Bank_of_America_logo.svg"
+  },
+  {
+    "id": 6,
+    "name": "Toyota",
+    "category": "Автомашин, авто засвар үйлчилгээ",
+    "jobs": 32,
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Toyota_carlogo.svg"
+  },
+  {
+    "id": 7,
+    "name": "Hilton Hotels",
+    "category": "Аялал жуулчлал, зочид буудал, нийтийн хоолны үйлчилгээ",
+    "jobs": 27,
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/4/4f/HiltonHotelsLogo.svg"
+  },
+  {
+    "id": 8,
+    "name": "Samsung",
+    "category": "Мэдээлэл технологи, Харилцаа холбоо",
+    "jobs": 80,
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg"
+  },
+  {
+    "id": 9,
+    "name": "Tesla",
+    "category": "Цахилгаан эрчим хүч, Дулаан хангамж",
+    "jobs": 64,
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Tesla_Motors.svg"
+  },
+  {
+    "id": 10,
+    "name": "Mongolian Mining Corporation",
+    "category": "Уул уурхай",
+    "jobs": 20,
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Mining_logo.svg"
+  },
+  {
+    "id": 11,
+    "name": "Google",
+    "category": "Мэдээлэл технологи, Харилцаа холбоо",
+    "jobs": 150,
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+  },
+  {
+    "id": 12,
+    "name": "Coca-Cola",
+    "category": "Хүнсний үйлдвэрлэл",
+    "jobs": 53,
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Coca_Cola_logo.svg"
+  },
+  {
+    "id": 13,
+    "name": "MCS Coca-Cola",
+    "category": "Хүнсний үйлдвэрлэл",
+    "jobs": 28,
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Coca_Cola_logo.svg"
+  },
+  {
+    "id": 14,
+    "name": "Oyu Tolgoi",
+    "category": "Уул уурхай",
+    "jobs": 42,
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Rio_Tinto_Logo.svg"
+  },
+  {
+    "id": 15,
+    "name": "Nike",
+    "category": "Оёдол, сүлжмэл, ноос ноолуурын үйлдвэрлэл",
+    "jobs": 39,
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg"
+  },
+  {
+    "id": 16,
+    "name": "UNICEF",
+    "category": "Олон улсын харилцаа",
+    "jobs": 14,
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/0/07/UNICEF_Logo.svg"
+  },
+  {
+    "id": 17,
+    "name": "Sony",
+    "category": "Хэвлэл мэдээлэл, Медиа, Дизайн",
+    "jobs": 58,
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/2/20/Sony_Logo.svg"
+  },
+  {
+    "id": 18,
+    "name": "Mongol Bank",
+    "category": "Банк, Санхүү",
+    "jobs": 33,
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/5/57/Bank_icon.svg"
+  },
+  {
+    "id": 19,
+    "name": "Erdenes Tavan Tolgoi",
+    "category": "Уул уурхай",
+    "jobs": 25,
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/5/51/Coal_icon.svg"
+  },
+  {
+    "id": 20,
+    "name": "Nomin Holding",
+    "category": "Худалдаа борлуулалт, маркетинг",
+    "jobs": 47,
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Nomin_logo.svg"
+  }
+]

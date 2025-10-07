@@ -6,11 +6,21 @@ export const SidebarProvider = ({ children }) => {
   const [sidebar, setSidebar] = useState(true);
 
   useEffect(() => {
+    const savedSidebar = localStorage.getItem("diilSidebar");
+    if (savedSidebar !== null) {
+      setSidebar(savedSidebar === "true");
+    }
+
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setSidebar(false);
+      if (window.innerWidth >= 1024) {
+        const saved = localStorage.getItem("diilSidebar");
+        if (saved !== null) {
+          setSidebar(saved === "true");
+        } else {
+          setSidebar(true);
+        }
       } else {
-        setSidebar(true);
+        setSidebar(false);
       }
     };
 
@@ -19,6 +29,10 @@ export const SidebarProvider = ({ children }) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("diilSidebar", sidebar);
+  }, [sidebar]);
 
   return (
     <SidebarContext.Provider value={{ sidebar, setSidebar }}>
