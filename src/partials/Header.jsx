@@ -2,6 +2,7 @@ import React from "react";
 import { useSidebar } from "../context/SidebarContext";
 import { RxDoubleArrowRight } from "react-icons/rx";
 import { FiArrowUpRight, FiMenu } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 function ExpandingSearch() {
   return (
@@ -37,6 +38,7 @@ function ExpandingSearch() {
 
 const Header = () => {
   const { sidebar, setSidebar } = useSidebar();
+  const navigate = useNavigate();
 
   return (
     <div className="w-full h-[4rem] flex items-center justify-between py-2 md:ps-2 md:pe-6 pe-2">
@@ -50,11 +52,21 @@ const Header = () => {
         <RxDoubleArrowRight className="text-[24px]" />
       </button>
       <img
-        className="lg:hidden md:block hidden"
+        onClick={() => {
+          navigate("/");
+        }}
+        className="lg:hidden md:block hidden cursor-pointer"
         src="/img/logo/logo.svg"
         alt="logo"
       />
-      <img className="md:hidden block" src="/img/logo/logoc.svg" alt="logo" />
+      <img
+        onClick={() => {
+          navigate("/");
+        }}
+        className="md:hidden block cursor-pointer"
+        src="/img/logo/logoc.svg"
+        alt="logo"
+      />
       <ExpandingSearch />
       <button className="group py-1 pe-1 ps-6 gap-3 lg:flex hidden items-center bg-[#020618] rounded-[99px] text-[#fff] hover:bg-[#29EAFF] hover:text-[#0F172B]">
         CV Бүтээх
@@ -65,7 +77,7 @@ const Header = () => {
       <div className="flex lg:hidden items-center gap-2">
         {" "}
         <button className="p-2 flex items-center justify-center rounded-full border-2 border-transparent hover:border-[#E2E8F0]">
-          <img src="/img/icon/user.svg" alt="user" />
+          <img src="/icon/user.svg" alt="user" />
         </button>
         <button
           onClick={() => setSidebar(!sidebar)}

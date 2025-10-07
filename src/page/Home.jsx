@@ -9,6 +9,7 @@ import works from "../json/workplaces.json";
 import jobs from "../json/specialoffers.json";
 import SpecialOffer from "../components/home/SpecialOffer";
 import { CgOptions } from "react-icons/cg";
+import { useNavigate } from "react-router-dom";
 
 const EyeIcon = () => (
   <svg
@@ -45,6 +46,7 @@ const Home = () => {
   const [sortedWorks, setSortedWorks] = useState(works);
   const [isAscending, setIsAscending] = useState(true);
   const [filter, setFilter] = useState("date");
+  const navigate = useNavigate();
 
   useEffect(() => {
     let sorted = [...works];
@@ -205,7 +207,7 @@ const Home = () => {
             } hover:bg-[#E2E8F0]`}
           >
             {isAscending ? "Шинэ → Хуучин" : "Шинэ ← Хуучин"}
-            <img src="/img/icon/ascendant.svg" alt="icon" />
+            <img src="/icon/ascendant.svg" alt="icon" />
           </button>
           <button
             onClick={() => {
@@ -227,7 +229,7 @@ const Home = () => {
                 : "md:border-2 border border-[#CAD5E2]"
             } hover:bg-[#E2E8F0]`}
           >
-            <img src="/img/icon/ascendant.svg" alt="icon" />
+            <img src="/icon/ascendant.svg" alt="icon" />
           </button>
         </div>
       </div>
@@ -238,6 +240,9 @@ const Home = () => {
               return (
                 <div
                   key={index}
+                  onClick={() => {
+                    navigate("/chat");
+                  }}
                   className="w-full py-4 ps-4 pe-2 gap-6 flex justify-between items-center cursor-pointer hover:bg-[#F1F5F9] group"
                 >
                   <div className="flex items-center gap-[13px]">
@@ -303,7 +308,7 @@ const Home = () => {
               <div className="flex items-center justify-between">
                 <div className="w-9 h-9 rounded-full border border-[#CAD5E2]">
                   <img
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-fill"
                     src={items.logo}
                     alt="logo"
                   />
@@ -400,7 +405,7 @@ const Home = () => {
                   <div className="relative">
                     <div className="flex items-center justify-between lg:mb-6 mb-3">
                       <div className="w-10 h-10 bg-[#4258FF] flex items-center justify-center rounded-full">
-                        <img src="/img/icon/star.svg" alt="star" />
+                        <img src="/icon/star.svg" alt="star" />
                       </div>
                       <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center cursor-pointer border-2 border-transparent hover:border-[#E2E8F0]">
                         <IoIosArrowForward />

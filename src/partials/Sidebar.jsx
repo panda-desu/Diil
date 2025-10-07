@@ -20,15 +20,21 @@ const Sidebar = () => {
         <div className="flex items-center justify-between">
           {sidebar ? (
             <img
+              onClick={() => {
+                navigate("/");
+              }}
               src="/img/logo/logo.svg"
               alt="logo"
-              className={`transition-opacity duration-300 `}
+              className={`transition-opacity duration-300 cursor-pointer `}
             />
           ) : (
             <img
+              onClick={() => {
+                navigate("/");
+              }}
               src="/img/logo/logoc.svg"
               alt="logo"
-              className={`transition-opacity duration-300`}
+              className={`transition-opacity duration-300 cursor-pointer`}
             />
           )}
           <button
@@ -43,18 +49,21 @@ const Sidebar = () => {
 
         <div>
           <button
+            onClick={() => {
+              navigate("/chat");
+            }}
             className={`w-full flex items-center text-[#fff] hover:text-[#0F172B] hover:bg-[#29EAFF] bg-[#020618] rounded-[99px] p-1.5 transition-all duration-300 group ${
               sidebar ? "gap-2" : "justify-center"
             }`}
           >
             <div className="flex items-center justify-center bg-[#1D293D] group-hover:bg-[#0F172B] rounded-full p-2 transition-all duration-300">
               <img
-                src="/img/icon/voice.svg"
+                src="/icon/voice.svg"
                 alt="icon"
                 className="group-hover:hidden"
               />
               <img
-                src="/img/icon/voiceh.svg"
+                src="/icon/voiceh.svg"
                 alt="icon"
                 className="hidden group-hover:block"
               />
