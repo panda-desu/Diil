@@ -7,6 +7,7 @@ import Home from "./page/Home";
 import ChatLayout from "./Layouts/ChatLayout";
 import Chat from "./page/Chat";
 import Companies from "./page/Companies";
+import Interviews from "./page/Interviews";
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
                 </Route>
 
                 <Route path="/companies" element={<Companies />} />
+
+                <Route path="/interviews" element={<Interviews />} />
               </Route>
             </Routes>
           </Router>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaChevronRight } from "react-icons/fa6";
+import { FaChevronRight, FaPlus } from "react-icons/fa6";
 import cat from "../json/categories.json";
 import companiesData from "../json/companies.json";
 
@@ -13,9 +13,9 @@ export default function Companies() {
       : companiesData.filter((company) => company.category === selectedFilter);
 
   return (
-    <div className="flex w-full h-full py-6 px-4">
+    <div className="flex w-full h-full lg:py-6 py-4 md:px-4 px-0">
       {/* LEFT SIDEBAR */}
-      <div className="w-[20vw] space-y-10">
+      <div className="w-[20vw] space-y-10 hidden lg:block">
         {/* Соёл, Нэмэлт зүйлс */}
         <div>
           <p className="font-bold text-[#020618] mb-4">Соёл, Нэмэлт зүйлс</p>
@@ -94,31 +94,92 @@ export default function Companies() {
       </div>
 
       {/* RIGHT MAIN AREA */}
-      <div className="flex-1 pl-6">
-        <div className="flex items-center justify-between mb-4">
-          <p className="text-[24px] font-bold text-[#020618]">Компаниуд</p>
-          <div className="flex items-center gap-3">
-            <div className="w-[1px] h-[1rem] bg-[#CAD5E2]" />
-            <button className="text-[#020618] border border-[#CAD5E2] py-2.5 px-3 rounded-[999px] flex items-center gap-2">
-              А → Я
+      <div className="flex-1 lg:pl-6 pl-0">
+        {/* title */}
+        <div className="flex flex-col md:px-0 px-4">
+          <div className="flex items-center justify-between mb-4">
+            <p className="lg:text-[24px] text-base font-bold text-[#020618]">
+              Компаниуд
+            </p>
+
+            {/* desktop filter*/}
+            <div className="lg:flex hidden items-center gap-3">
+              <div className="w-[1px] h-[1rem] bg-[#CAD5E2]" />
+              <button className="text-[#020618] border border-[#CAD5E2] py-2.5 px-3 rounded-[999px] flex items-center gap-2">
+                А → Я
+                <img src="/icon/ascendant.svg" alt="icon" />
+              </button>
+            </div>
+          </div>
+
+          {/* tablet filter */}
+          <div className="mb-4 lg:hidden md:flex hidden items-center justify-between">
+            <div className="flex items-center justify-between gap-2">
+              <button className="text-[#020618] border border-[#CAD5E2] py-2 pe-3 ps-3.5 rounded-[999px] flex items-center gap-2 text-sm">
+                Соёл, Нэмэлт зүйлс
+                <div className="w-5 h-5 rounded-full bg-[#F1F5F9] flex items-center justify-center">
+                  <FaPlus />
+                </div>
+              </button>
+              <button className="text-[#020618] border border-[#CAD5E2] py-2 pe-3 ps-3.5 rounded-[999px] flex items-center gap-2 text-sm">
+                Үйл ажиллагааны чиглэл
+                <div className="w-5 h-5 rounded-full bg-[#F1F5F9] flex items-center justify-center">
+                  <FaPlus />
+                </div>
+              </button>
+              <button className="text-[#020618] border border-[#CAD5E2] py-2 pe-3 ps-3.5 rounded-[999px] flex items-center gap-2 text-sm">
+                Ажлилчдын тоо
+                <div className="w-5 h-5 rounded-full bg-[#F1F5F9] flex items-center justify-center">
+                  <FaPlus />
+                </div>
+              </button>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-[1px] h-[1rem] bg-[#CAD5E2]" />
+              <button className="text-[#020618] border border-[#CAD5E2] py-1.5 px-3 rounded-[999px] flex items-center gap-2">
+                А → Я
+              </button>
+            </div>
+          </div>
+
+          {/* phone filter */}
+          <div className="mb-4 md:hidden flex items-center justify-between">
+            <button className="text-[#020618] border border-[#CAD5E2] py-2 pe-3 ps-3.5 rounded-[999px] flex items-center gap-2 text-sm">
+              Шүүлтүүр нэмэх
+              <div className="w-5 h-5 rounded-full bg-[#F1F5F9] flex items-center justify-center">
+                <FaPlus />
+              </div>
+            </button>
+
+            <button className="text-[#020618] border border-[#CAD5E2] w-[38px] h-[38px] rounded-full flex items-center justify-center">
               <img src="/icon/ascendant.svg" alt="icon" />
             </button>
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:gap-3 gap-0">
           {filteredCompanies.map((company) => (
             <div
               key={company.id}
-              className="bg-white border border-[#CAD5E2] rounded-[16px] p-4 hover:shadow-md transition"
+              className="bg-white md:border border-b border-[#CAD5E2] md:rounded-[16px] p-4 hover:shadow-md transition"
             >
-              <div className="flex items-start justify-between">
-                <div className="w-9 h-9 rounded-full flex items-center justify-center mb-4 border">
-                  <img
-                    src={company.logo}
-                    alt={company.name}
-                    className="w-full h-full object-contain rounded-full"
-                  />
+              <div className="flex md:items-start items-center justify-between">
+                <div className="md:block flex items-center gap-2">
+                  <div className="w-9 h-9 rounded-full flex items-center justify-center md:mb-4 mb-0 border">
+                    <img
+                      src={company.logo}
+                      alt={company.name}
+                      className="w-full h-full object-contain rounded-full"
+                    />
+                  </div>
+                  <div className="md:hidden block w-[40vw]">
+                    <p className="font-bold text-[#020618] truncate">
+                      {company.name}
+                    </p>
+                    <p className="text-sm text-[#62748E] truncate">
+                      {company.category}
+                    </p>
+                  </div>
                 </div>
                 <div className="flex items-center gap-2 cursor-pointer">
                   <p className="text-sm text-[#020618]">
@@ -127,7 +188,7 @@ export default function Companies() {
                   <FaChevronRight className="text-[#020618]" />
                 </div>
               </div>
-              <div>
+              <div className="md:block hidden">
                 <p className="font-bold text-[#020618] w-full truncate">
                   {company.name}
                 </p>

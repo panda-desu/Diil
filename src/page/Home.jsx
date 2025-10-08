@@ -311,7 +311,7 @@ const Home = () => {
           </div>
         </div>
         {/* phone table */}
-        <div className="block md:hidden w-full h-[70vh] overflow-y-auto">
+        <div className="block md:hidden w-full h-[90vh] overflow-y-auto">
           {sortedWorks.map((items, index) => (
             <div className="p-4 border-b border-[#CAD5E2]" key={index}>
               <div className="flex items-center justify-between">

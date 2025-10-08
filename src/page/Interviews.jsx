@@ -1,0 +1,270 @@
+import React from "react";
+import { FaChevronDown, FaChevronRight } from "react-icons/fa6";
+import data from "../json/interviews.json";
+
+const Interviews = () => {
+  const getTimeAgo = (dateString) => {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffMs = now - date;
+
+    const diffSec = Math.floor(diffMs / 1000);
+    const diffMin = Math.floor(diffSec / 60);
+    const diffHour = Math.floor(diffMin / 60);
+    const diffDay = Math.floor(diffHour / 24);
+    const diffWeek = Math.floor(diffDay / 7);
+    const diffMonth = Math.floor(diffDay / 30);
+    const diffYear = Math.floor(diffDay / 365);
+
+    if (diffYear > 0) {
+      return `${diffYear} жилийн өмнө`;
+    } else if (diffMonth > 0) {
+      return `${diffMonth} сарын өмнө`;
+    } else if (diffWeek > 0) {
+      return `${diffWeek} долоо хоногийн өмнө`;
+    } else if (diffDay > 0) {
+      return `${diffDay} өдрийн өмнө`;
+    } else if (diffHour > 0) {
+      return `${diffHour} цагийн өмнө`;
+    } else if (diffMin > 0) {
+      return `${diffMin} минутын өмнө`;
+    } else {
+      return "Дөнгөж сая";
+    }
+  };
+
+  function formatSalary(salary) {
+    if (salary.includes("-")) {
+      const [min, max] = salary.split("-").map(Number);
+      return `${formatSingleSalary(min)} - ${formatSingleSalary(max)}`;
+    } else {
+      return formatSingleSalary(Number(salary));
+    }
+  }
+
+  function formatSingleSalary(value) {
+    if (value >= 1_000_000) {
+      const val = (value / 1_000_000).toFixed(1);
+      return val.endsWith(".0") ? `${parseInt(val)} сая ₮` : `${val} сая ₮`;
+    } else if (value >= 1000) {
+      const val = (value / 1000).toFixed(0);
+      return `${val} мянга ₮`;
+    }
+
+    return `${value} ₮`;
+  }
+
+  return (
+    <div className="p-6">
+      {/* datas */}
+      <div className="flex items-center gap-3 mb-6 justify-between">
+        <div className="w-[15vw] h-[147px] bg-[#F1F5F9] rounded-[24px] p-4 space-y-5">
+          <div className="flex items-start justify-between">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#fff]">
+              <img src="/icon/inter/total.svg" alt="icon" />
+            </div>
+            <button className="text-[#020618]">
+              <FaChevronRight />
+            </button>
+          </div>
+          <div>
+            <p className="text-[#020618] font-bold">13 Нийт</p>
+            <p className="text-[#62748E] text-xs">
+              Таны нийт ярилцлага хйисэн компаниудын тоо
+            </p>
+          </div>
+        </div>
+        <div className="w-[15vw] h-[147px] bg-[#F1F5F9] rounded-[24px] p-4 space-y-5">
+          <div className="flex items-start justify-between">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#fff]">
+              <img src="/icon/inter/inter.svg" alt="icon" />
+            </div>
+            <button className="text-[#020618]">
+              <FaChevronRight />
+            </button>
+          </div>
+          <div>
+            <p className="text-[#020618] font-bold">10 Ярилцлага</p>
+            <p className="text-[#62748E] text-xs">
+              Зөвхөн таны ярилцсан хйисэн компаниудын тоо
+            </p>
+          </div>
+        </div>
+        <div className="w-[15vw] h-[147px] bg-[#F1F5F9] rounded-[24px] p-4 space-y-5">
+          <div className="flex items-start justify-between">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#fff]">
+              <img src="/icon/inter/ai.svg" alt="icon" />
+            </div>
+            <button className="text-[#020618]">
+              <FaChevronRight />
+            </button>
+          </div>
+          <div>
+            <p className="text-[#020618] font-bold">3 AI-н ярилцлага</p>
+            <p className="text-[#62748E] text-xs">
+              Таны өмнөөс хийсэн ярилцлагууд
+            </p>
+          </div>
+        </div>
+        <div className="w-[15vw] h-[147px] bg-[#F1F5F9] rounded-[24px] p-4 space-y-5">
+          <div className="flex items-start justify-between">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#fff]">
+              <img src="/icon/inter/ready.svg" alt="icon" />
+            </div>
+            <button className="text-[#020618]">
+              <FaChevronRight />
+            </button>
+          </div>
+          <div>
+            <p className="text-[#020618] font-bold">4 Сонирхосон</p>
+            <p className="text-[#62748E] text-xs">
+              Таныг ажилд авах сонирхолтой компаниудын тоо
+            </p>
+          </div>
+        </div>
+
+        <div className="relative w-[15vw] h-[147px] rounded-[24px] p-0.5  bg-[linear-gradient(40deg,#4342FF,#FF6829)] bg-opacity-10">
+          <div className="relative rounded-[22px] bg-[#F1F5F9] w-full h-full p-3 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#4342FF] to-[#FF6829] opacity-10"></div>
+            <div className="space-y-5">
+              <div className="flex items-start justify-between">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#fff]">
+                  <img src="/icon/inter/ready.svg" alt="icon" />
+                </div>
+                <button className="text-[#020618]">
+                  <FaChevronRight />
+                </button>
+              </div>
+              <div>
+                <p className="text-[#020618] font-bold">4 Бэлэн</p>
+                <p className="text-[#62748E] text-xs">
+                  Таныг шууд ажилд авахад бэлэн компаниудын тоо
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* table*/}
+      <div className="mt-6">
+        <p className="text-[24px] font-bold text-[#020618] mb-6">Ярилцлагууд</p>
+
+        <div className="overflow-hidden rounded-[16px] border border-[#E5E7EB]">
+          <table className="min-w-full table-auto">
+            <thead>
+              <tr className="border-b bg-[#F8FAFC] px-3">
+                <th className="py-2">
+                  <button className="text-[#020618] flex items-center gap-1 py-2.5 pe-3 ps-4 font-normal">
+                    Компаниуд
+                    <FaChevronDown />
+                  </button>
+                </th>
+                <th className="py-2">
+                  <button className="text-[#020618] flex items-center gap-1 py-2.5 pe-3 ps-4 font-normal">
+                    Бүгд
+                    <FaChevronDown />
+                  </button>
+                </th>
+                <th className="py-2">
+                  <button className="text-[#020618] flex items-center gap-1 py-2.5 pe-3 ps-4 font-normal">
+                    Бүгд
+                    <FaChevronDown />
+                  </button>
+                </th>
+                <th className="py-2">
+                  <button className="text-[#020618] flex items-center gap-1 py-2.5 pe-3 ps-4 font-normal">
+                    Шинэ → Өмнөх
+                    <img src="/icon/ascendant.svg" alt="icon" />
+                  </button>
+                </th>
+                <th className="py-2">
+                  <button className="text-[#020618] flex items-center gap-1 py-2.5 pe-3 ps-4 font-normal">
+                    Асуултууд
+                  </button>
+                </th>
+                <th className="py-2">
+                  <button className="text-[#020618] flex items-center gap-1 py-2.5 pe-3 ps-4 font-normal">
+                    Хариултууд
+                  </button>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {data?.map((item, index) => (
+                <tr
+                  key={index}
+                  className="hover:bg-gray-50 last:rounded-b-[16px]" // optional rounded on last row
+                >
+                  <td className="py-3 ps-3 flex items-center gap-2">
+                    <div className="w-9 h-9 rounded-full border">
+                      <img
+                        src={item.logo}
+                        alt={item.companyName}
+                        className="w-full h-full rounded-full object-contain"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-[#020618] font-bold w-[150px] truncate">
+                        {item.jobName}
+                      </p>
+                      <div className="flex items-center gap-2">
+                        <p className="text-sm text-[#62748E] truncate max-w-[50px]">
+                          {item.companyName}
+                        </p>
+                        <p className="text-sm text-[#62748E] max-w-[80px] truncate">
+                          {getTimeAgo(item.date)}
+                        </p>
+                      </div>
+                    </div>
+                    <p className="text-[#020618] font-bold text-sm">
+                      {formatSalary(item.salary)}
+                    </p>
+                  </td>
+
+                  <td className="py-3 ps-2">
+                    <div className="inline-block text-[#020618] text-sm py-1 px-2 rounded-[99px] border border-[#CAD5E2]">
+                      {item.interview === "me"
+                        ? "Би өөрөө ярилцсан"
+                        : item.interview === "ai"
+                        ? "AI Ярилцсан"
+                        : "Ярилцаагүй"}
+                    </div>
+                  </td>
+
+                  <td className="py-3 ps-2">
+                    <div className="inline-block text-[#020618] text-sm py-1 px-2 rounded-[99px] border border-[#CAD5E2]">
+                      {item.isInterested
+                        ? "Намайг сонирхосон"
+                        : "Намайг сонирхоогүй"}
+                    </div>
+                  </td>
+
+                  <td className="py-3 ps-2">
+                    <div className="inline-block text-[#020618] text-sm py-1 px-2 rounded-[99px] border border-[#CAD5E2]">
+                      {item.isNew}
+                    </div>
+                  </td>
+
+                  <td className="py-3 ps-2">
+                    <div className="inline-block text-[#020618] text-sm py-1 px-2 rounded-[99px] border border-[#CAD5E2]">
+                      {item.questionNumber}
+                    </div>
+                  </td>
+
+                  <td className="py-3 ps-2">
+                    <div className="inline-block text-[#020618] text-sm py-1 px-2 rounded-[99px] border border-[#CAD5E2]">
+                      {item.answerNumber}
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Interviews;

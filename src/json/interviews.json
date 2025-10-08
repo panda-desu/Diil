@@ -1,0 +1,62 @@
+[
+  {
+    "companyName": "TechCorp",
+    "logo": "/img/logo/logo.svg",
+    "jobName": "Frontend Developer",
+    "date": "2025-10-01",
+    "salary": "14000000-17500000",
+    "interview": "ai",
+    "isInterested": true,
+    "isNew": "2 days ago",
+    "questionNumber": 5,
+    "answerNumber": 5
+  },
+  {
+    "companyName": "InnovateX",
+    "logo": "/img/logo/mbank.svg",
+    "jobName": "Backend Engineer",
+    "date": "2025-09-28",
+    "salary": "15750000-21000000",
+    "interview": "me",
+    "isInterested": false,
+    "isNew": "5 days ago",
+    "questionNumber": 3,
+    "answerNumber": 2
+  },
+  {
+    "companyName": "CreativeSoft",
+    "logo": "/img/logo/socialpay.svg",
+    "jobName": "UI/UX Designer",
+    "date": "2025-10-05",
+    "salary": "12250000-15750000",
+    "interview": "didnt",
+    "isInterested": true,
+    "isNew": "1 day ago",
+    "questionNumber": 4,
+    "answerNumber": 4
+  },
+  {
+    "companyName": "DataHub",
+    "logo": "/img/logo/mobicom.svg",
+    "jobName": "Data Analyst",
+    "date": "2025-10-03",
+    "salary": "14000000-17500000",
+    "interview": "ai",
+    "isInterested": false,
+    "isNew": "3 days ago",
+    "questionNumber": 6,
+    "answerNumber": 5
+  },
+  {
+    "companyName": "NextGen Solutions",
+    "logo": "/img/logo/tdb.svg",
+    "jobName": "Fullstack Developer",
+    "date": "2025-09-30",
+    "salary": "17500000-22750000",
+    "interview": "me",
+    "isInterested": true,
+    "isNew": "6 days ago",
+    "questionNumber": 7,
+    "answerNumber": 6
+  }
+]
