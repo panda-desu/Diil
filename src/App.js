@@ -8,6 +8,7 @@ import ChatLayout from "./Layouts/ChatLayout";
 import Chat from "./page/Chat";
 import Companies from "./page/Companies";
 import Interviews from "./page/Interviews";
+import DNA from "./page/DNA";
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
                 <Route path="/companies" element={<Companies />} />
 
                 <Route path="/interviews" element={<Interviews />} />
+
+                <Route path="/workdna" element={<DNA />} />
               </Route>
             </Routes>
           </Router>

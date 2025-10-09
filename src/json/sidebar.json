@@ -38,7 +38,7 @@
       "en": "Work DNA",
       "rs": "Рабочая ДНК"
     },
-    "link": "/work",
+    "link": "/workdna",
     "img": "/img/sidebar/dna.svg",
     "selectedImg": "/img/sidebar/dnah.svg",
     "id": 3
