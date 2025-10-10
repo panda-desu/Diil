@@ -9,6 +9,8 @@ import Chat from "./page/Chat";
 import Companies from "./page/Companies";
 import Interviews from "./page/Interviews";
 import DNA from "./page/DNA";
+import Contact from "./page/Contact";
+import Feedback from "./page/Feedback";
 
 function App() {
   return (
@@ -29,6 +31,10 @@ function App() {
                 <Route path="/interviews" element={<Interviews />} />
 
                 <Route path="/workdna" element={<DNA />} />
+
+                <Route path="/contact" element={<Contact />} />
+
+                <Route path="/feedback" element={<Feedback />} />
               </Route>
             </Routes>
           </Router>

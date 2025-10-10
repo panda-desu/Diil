@@ -1,8 +1,20 @@
-import React from "react";
-import { FaChevronDown, FaChevronRight } from "react-icons/fa6";
+import React, { useRef, useState } from "react";
+import { FaChevronDown, FaChevronRight, FaPlus } from "react-icons/fa6";
 import data from "../json/interviews.json";
+import { motion, useMotionValue } from "framer-motion";
+import { MdOutlineRefresh } from "react-icons/md";
+import { IoIosArrowDown, IoMdClose } from "react-icons/io";
 
 const Interviews = () => {
+  const [showFilter, setShowFilter] = useState(false);
+  const y = useMotionValue(0);
+  const drawerRef = useRef(null);
+
+  const handleDragEnd = (_, info) => {
+    if (info.offset.y > 100) setShowFilter(false);
+    else setShowFilter(true);
+  };
+
   const getTimeAgo = (dateString) => {
     const date = new Date(dateString);
     const now = new Date();
@@ -55,10 +67,10 @@ const Interviews = () => {
   }
 
   return (
-    <div className="p-6">
+    <div className="md:p-6 p-0 relative">
       {/* datas */}
-      <div className="flex items-center gap-3 mb-6 justify-between">
-        <div className="w-[15vw] h-[147px] bg-[#F1F5F9] rounded-[24px] p-4 space-y-5">
+      <div className="md:flex hidden items-center gap-3 mb-6 justify-between overflow-x-scroll scrollbar-hide">
+        <div className="lg:w-[220px] lg:h-[149px] w-[200px] h-[165px] flex-shrink-0 bg-[#F1F5F9] rounded-[24px] p-4 space-y-5">
           <div className="flex items-start justify-between">
             <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#fff]">
               <img src="/icon/inter/total.svg" alt="icon" />
@@ -74,7 +86,7 @@ const Interviews = () => {
             </p>
           </div>
         </div>
-        <div className="w-[15vw] h-[147px] bg-[#F1F5F9] rounded-[24px] p-4 space-y-5">
+        <div className="lg:w-[220px] lg:h-[149px] w-[200px] h-[165px] flex-shrink-0 bg-[#F1F5F9] rounded-[24px] p-4 space-y-5">
           <div className="flex items-start justify-between">
             <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#fff]">
               <img src="/icon/inter/inter.svg" alt="icon" />
@@ -90,7 +102,7 @@ const Interviews = () => {
             </p>
           </div>
         </div>
-        <div className="w-[15vw] h-[147px] bg-[#F1F5F9] rounded-[24px] p-4 space-y-5">
+        <div className="lg:w-[220px] lg:h-[149px] w-[200px] h-[165px] flex-shrink-0 bg-[#F1F5F9] rounded-[24px] p-4 space-y-5">
           <div className="flex items-start justify-between">
             <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#fff]">
               <img src="/icon/inter/ai.svg" alt="icon" />
@@ -106,7 +118,7 @@ const Interviews = () => {
             </p>
           </div>
         </div>
-        <div className="w-[15vw] h-[147px] bg-[#F1F5F9] rounded-[24px] p-4 space-y-5">
+        <div className="lg:w-[220px] lg:h-[149px] w-[200px] h-[165px] flex-shrink-0 bg-[#F1F5F9] rounded-[24px] p-4 space-y-5">
           <div className="flex items-start justify-between">
             <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#fff]">
               <img src="/icon/inter/ready.svg" alt="icon" />
@@ -123,7 +135,7 @@ const Interviews = () => {
           </div>
         </div>
 
-        <div className="relative w-[15vw] h-[147px] rounded-[24px] p-0.5  bg-[linear-gradient(40deg,#4342FF,#FF6829)] bg-opacity-10">
+        <div className="relative lg:w-[220px] lg:h-[149px] w-[200px] h-[165px] flex-shrink-0 rounded-[24px] p-0.5  bg-[linear-gradient(40deg,#4342FF,#FF6829)] bg-opacity-10">
           <div className="relative rounded-[22px] bg-[#F1F5F9] w-full h-full p-3 overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-tr from-[#4342FF] to-[#FF6829] opacity-10"></div>
             <div className="space-y-5">
@@ -147,7 +159,7 @@ const Interviews = () => {
       </div>
 
       {/* table*/}
-      <div className="mt-6">
+      <div className="mt-6 md:block hidden">
         <p className="text-[24px] font-bold text-[#020618] mb-6">Ярилцлагууд</p>
 
         <div className="overflow-hidden rounded-[16px] border border-[#E5E7EB]">
@@ -172,18 +184,18 @@ const Interviews = () => {
                     <FaChevronDown />
                   </button>
                 </th>
-                <th className="py-2">
+                <th className="py-2 lg:table-row md:hidden">
                   <button className="text-[#020618] flex items-center gap-1 py-2.5 pe-3 ps-4 font-normal">
                     Шинэ → Өмнөх
                     <img src="/icon/ascendant.svg" alt="icon" />
                   </button>
                 </th>
-                <th className="py-2">
+                <th className="py-2 lg:table-row md:hidden">
                   <button className="text-[#020618] flex items-center gap-1 py-2.5 pe-3 ps-4 font-normal">
                     Асуултууд
                   </button>
                 </th>
-                <th className="py-2">
+                <th className="py-2 lg:table-row md:hidden">
                   <button className="text-[#020618] flex items-center gap-1 py-2.5 pe-3 ps-4 font-normal">
                     Хариултууд
                   </button>
@@ -194,7 +206,7 @@ const Interviews = () => {
               {data?.map((item, index) => (
                 <tr
                   key={index}
-                  className="hover:bg-gray-50 last:rounded-b-[16px]" // optional rounded on last row
+                  className={`hover:bg-gray-50 last:rounded-b-[16px] `}
                 >
                   <td className="py-3 ps-3 flex items-center gap-2">
                     <div className="w-9 h-9 rounded-full border">
@@ -240,19 +252,19 @@ const Interviews = () => {
                     </div>
                   </td>
 
-                  <td className="py-3 ps-2">
+                  <td className="py-3 ps-2 lg:table-cell hidden">
                     <div className="inline-block text-[#020618] text-sm py-1 px-2 rounded-[99px] border border-[#CAD5E2]">
                       {item.isNew}
                     </div>
                   </td>
 
-                  <td className="py-3 ps-2">
+                  <td className="py-3 ps-2 lg:table-cell hidden">
                     <div className="inline-block text-[#020618] text-sm py-1 px-2 rounded-[99px] border border-[#CAD5E2]">
                       {item.questionNumber}
                     </div>
                   </td>
 
-                  <td className="py-3 ps-2">
+                  <td className="py-3 ps-2 lg:table-cell hidden">
                     <div className="inline-block text-[#020618] text-sm py-1 px-2 rounded-[99px] border border-[#CAD5E2]">
                       {item.answerNumber}
                     </div>
@@ -263,6 +275,144 @@ const Interviews = () => {
           </table>
         </div>
       </div>
+
+      {/* phone */}
+
+      <div className="md:hidden flex flex-col px-4 pt-6 pb-3 ">
+        <div className="flex items-center justify-between mb-4">
+          <p className=" text-base font-bold text-[#020618]">Компаниуд</p>
+        </div>
+
+        {/* filter */}
+        <div className="mb-4 flex items-center justify-between">
+          <button
+            onClick={() => {
+              setShowFilter(true);
+            }}
+            className="text-[#020618] border border-[#CAD5E2] py-2 pe-3 ps-3.5 rounded-[999px] flex items-center gap-2 text-sm"
+          >
+            Шүүлтүүр нэмэх
+            <div className="w-5 h-5 rounded-full bg-[#F1F5F9] flex items-center justify-center">
+              <FaPlus />
+            </div>
+          </button>
+
+          <button className="text-[#020618] border border-[#CAD5E2] w-[38px] h-[38px] rounded-full flex items-center justify-center">
+            <img src="/icon/ascendant.svg" alt="icon" />
+          </button>
+        </div>
+      </div>
+
+      {/* phone table */}
+      <div className="md:hidden block h-[70vh] overflow-y-scroll scroll-bar-hidden">
+        {data.map((item, index) => (
+          <div key={index} className="border-b border-[#CAD5E2] p-4">
+            <div className="flex  items-start gap-2 justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <div className="w-9 h-9 rounded-full border flex items-center justify-center">
+                  <img src={item.logo} alt="logo" />
+                </div>
+                <p className="text-sm text-[#62748E] w-[50vw] truncate">
+                  {item.companyName}
+                  ajhb
+                </p>
+              </div>
+              <button className="flex items-center gap-2 text-[#020618] text-xs">
+                {item.isNew} <FaChevronRight />
+              </button>
+            </div>
+            <div className="flex items-center gap-4 mb-4">
+              <p className="text-[#020618] font-bold max-w-[45vw] truncate">
+                {item.jobName}
+              </p>
+              <p className="text-[#020618] text-sm">
+                {formatSalary(item.salary)}
+              </p>
+            </div>
+            <div className="bg-[#F1F5F9] p-3 rounded-[16px] flex flex-wrap gap-1">
+              <p className="text-xs text-[#020618] me-2">
+                <span className="text-[#62748E]">#</span>
+                {item.interview === "me"
+                  ? "Би өөрөө ярилцсан"
+                  : item.interview === "ai"
+                  ? "AI Ярилцсан"
+                  : "Ярилцаагүй"}
+              </p>
+              <p className="text-xs text-[#020618] me-2">
+                <span className="text-[#62748E]">#</span>
+                {item.isInterested ? "Намайг сонирхосон" : "Намайг сонирхоогүй"}
+              </p>
+              <p className="text-xs text-[#020618] me-2">
+                <span className="text-[#62748E]">#</span>
+                {item.isInterested ? "Намайг сонирхосон" : "Намайг сонирхоогүй"}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* drawer */}
+      {showFilter && (
+        <div
+          className="fixed inset-0 bg-black/40 backdrop:blur-sm z-30"
+          onClick={() => {
+            setShowFilter(false);
+          }}
+        ></div>
+      )}
+      <motion.div
+        ref={drawerRef}
+        drag="y"
+        dragConstraints={{ top: 0, bottom: 0 }}
+        style={{ y }}
+        onDragEnd={handleDragEnd}
+        animate={{ y: showFilter ? 0 : "100%" }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        className="fixed bottom-0 left-0 right-0 bg-white rounded-t-2xl px-4 pt-4 pb-12 z-40 shadow-xl"
+      >
+        <div className="w-12 h-1.5 bg-gray-300 rounded-full mx-auto mb-4"></div>
+
+        <div className="flex items-center justify-between mb-4">
+          <button className="p-2.5 rounded-full border border-[#CAD5E2] ">
+            <MdOutlineRefresh />
+          </button>
+          <p className="text-[#020618] font-bold">Шүүлтүүр нэмэх</p>
+          <button
+            onClick={() => {
+              setShowFilter(false);
+            }}
+            className="p-2.5 rounded-full border border-[#CAD5E2] "
+          >
+            <IoMdClose />
+          </button>
+        </div>
+        <div className="space-y-2 w-full">
+          <button className="w-full flex items-center justify-between px-4 py-2 rounded-[999px] text-[#020618] border border-[#CAD5E2]">
+            Компаниуд
+            <IoIosArrowDown />
+          </button>
+          <button className="w-full flex items-center justify-between px-4 py-2 rounded-[999px] text-[#020618] border border-[#CAD5E2]">
+            Ярилцлага
+            <IoIosArrowDown />
+          </button>
+          <button className="w-full flex items-center justify-between px-4 py-2 rounded-[999px] text-[#020618] border border-[#CAD5E2]">
+            Таныг сонирхосон
+            <IoIosArrowDown />
+          </button>
+          <button className="w-full flex items-center justify-between px-4 py-2 rounded-[999px] text-[#020618] border border-[#CAD5E2]">
+            Таныг сонирхосон
+            <IoIosArrowDown />
+          </button>
+          <button className="w-full flex items-center justify-between px-4 py-2 rounded-[999px] text-[#020618] border border-[#CAD5E2]">
+            Асуултууд
+            <IoIosArrowDown />
+          </button>
+          <button className="w-full flex items-center justify-between px-4 py-2 rounded-[999px] text-[#020618] border border-[#CAD5E2]">
+            Хариултууд
+            <IoIosArrowDown />
+          </button>
+        </div>
+      </motion.div>
     </div>
   );
 };

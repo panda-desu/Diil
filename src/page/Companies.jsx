@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { FaChevronRight, FaPlus } from "react-icons/fa6";
 import cat from "../json/categories.json";
 import companiesData from "../json/companies.json";
+import { motion, useMotionValue } from "framer-motion";
+import { MdOutlineRefresh } from "react-icons/md";
+import { IoIosArrowDown, IoMdClose } from "react-icons/io";
 
 export default function Companies() {
   const [selectedFilter, setSelectedFilter] = useState("all");
+  const [showFilter, setShowFilter] = useState(false);
+  const y = useMotionValue(0);
+  const drawerRef = useRef(null);
 
   // 🔍 Filtered companies logic
   const filteredCompanies =
@@ -12,8 +18,13 @@ export default function Companies() {
       ? companiesData
       : companiesData.filter((company) => company.category === selectedFilter);
 
+  const handleDragEnd = (_, info) => {
+    if (info.offset.y > 100) setShowFilter(false);
+    else setShowFilter(true);
+  };
+
   return (
-    <div className="flex w-full h-full lg:py-6 py-4 md:px-4 px-0">
+    <div className="flex w-full h-full lg:py-6 py-4 md:px-4 px-0 relative">
       {/* LEFT SIDEBAR */}
       <div className="w-[20vw] space-y-10 hidden lg:block">
         {/* Соёл, Нэмэлт зүйлс */}
@@ -144,7 +155,12 @@ export default function Companies() {
 
           {/* phone filter */}
           <div className="mb-4 md:hidden flex items-center justify-between">
-            <button className="text-[#020618] border border-[#CAD5E2] py-2 pe-3 ps-3.5 rounded-[999px] flex items-center gap-2 text-sm">
+            <button
+              onClick={() => {
+                setShowFilter(true);
+              }}
+              className="text-[#020618] border border-[#CAD5E2] py-2 pe-3 ps-3.5 rounded-[999px] flex items-center gap-2 text-sm"
+            >
               Шүүлтүүр нэмэх
               <div className="w-5 h-5 rounded-full bg-[#F1F5F9] flex items-center justify-center">
                 <FaPlus />
@@ -205,6 +221,58 @@ export default function Companies() {
           <p className="text-[#62748E] mt-6">Компани олдсонгүй.</p>
         )}
       </div>
+
+      {/* drawer */}
+
+      {showFilter && (
+        <div
+          className="fixed inset-0 bg-black/40 backdrop:blur-sm z-30"
+          onClick={() => {
+            setShowFilter(false);
+          }}
+        ></div>
+      )}
+      <motion.div
+        ref={drawerRef}
+        drag="y"
+        dragConstraints={{ top: 0, bottom: 0 }}
+        style={{ y }}
+        onDragEnd={handleDragEnd}
+        animate={{ y: showFilter ? 0 : "100%" }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        className="fixed bottom-0 left-0 right-0 bg-white rounded-t-2xl px-4 pt-4 pb-12 z-40 shadow-xl"
+      >
+        <div className="w-12 h-1.5 bg-gray-300 rounded-full mx-auto mb-4"></div>
+
+        <div className="flex items-center justify-between mb-4">
+          <button className="p-2.5 rounded-full border border-[#CAD5E2] ">
+            <MdOutlineRefresh />
+          </button>
+          <p className="text-[#020618] font-bold">Шүүлтүүр нэмэх</p>
+          <button
+            onClick={() => {
+              setShowFilter(false);
+            }}
+            className="p-2.5 rounded-full border border-[#CAD5E2] "
+          >
+            <IoMdClose />
+          </button>
+        </div>
+        <div className="space-y-2 w-full">
+          <button className="w-full flex items-center justify-between px-4 py-2 rounded-[999px] text-[#020618] border border-[#CAD5E2]">
+            Үйл ажиллагаа
+            <IoIosArrowDown />
+          </button>
+          <button className="w-full flex items-center justify-between px-4 py-2 rounded-[999px] text-[#020618] border border-[#CAD5E2]">
+            Соёл
+            <IoIosArrowDown />
+          </button>
+          <button className="w-full flex items-center justify-between px-4 py-2 rounded-[999px] text-[#020618] border border-[#CAD5E2]">
+            Соёл
+            <IoIosArrowDown />
+          </button>
+        </div>
+      </motion.div>
     </div>
   );
 }
