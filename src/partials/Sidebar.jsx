@@ -113,7 +113,9 @@ const Sidebar = () => {
       </div>
       <div>
         <div
-          onClick={() => {}}
+          onClick={() => {
+            navigate("/contact");
+          }}
           className={`w-full p-1 flex items-center hover:bg-[#E2E8F0] transition-all duration-300 rounded-[999px] cursor-pointer group ${
             sidebar ? "gap-2" : "justify-center"
           }`}
@@ -128,7 +130,9 @@ const Sidebar = () => {
 
         <div>
           <div
-            onClick={() => {}}
+            onClick={() => {
+              navigate("/feedback");
+            }}
             className={`w-full p-1 flex items-center hover:bg-[#E2E8F0] transition-all duration-300 rounded-[999px] cursor-pointer group ${
               sidebar ? "gap-2" : "justify-center"
             }`}
