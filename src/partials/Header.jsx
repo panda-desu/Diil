@@ -8,10 +8,10 @@ function ExpandingSearch() {
   return (
     <div className="flex items-center ">
       <div className="relative group">
-        <div className="flex items-center bg-[#F1F5F9] rounded-full shadow-md transition-all duration-300 md:w-[20rem] w-[13rem] h-[3rem] md:group-hover:w-[26.25rem] p-1">
-          <div className="flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-[#fff] rounded-full cursor-pointer ">
+        <div className="flex items-center bg-[#F1F5F9] rounded-full shadow-md transition-all duration-300 md:w-[20rem] w-[13rem] h-[2.5rem] md:group-hover:w-[26.25rem] p-1">
+          <div className="flex items-center justify-center w-[2rem] h-[2rem] bg-[#fff] rounded-full cursor-pointer ">
             <svg
-              className="w-[1.5rem] h-[1.5rem] text-[#020618]"
+              className="w-[1rem] h-[1rem] text-[#020618]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -41,7 +41,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full h-[4rem] flex items-center justify-between py-2 md:ps-2 md:pe-6 pe-2">
+    <div className="w-full h-[4rem] flex items-center justify-between py-3 md:ps-2 md:pe-6 pe-2 border-b lg:border-transparent border-[#CAD5E2]">
       <button
         onClick={() => setSidebar(!sidebar)}
         disabled={sidebar}

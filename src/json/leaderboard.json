@@ -1,0 +1,79 @@
+[
+  {
+    "name": "Alice Johnson",
+    "position": 1,
+    "score": 950,
+    "work": "Software Engineer at TechCorp",
+    "image": "https://randomuser.me/api/portraits/women/1.jpg"
+  },
+  {
+    "name": "Bob Smith",
+    "position": 2,
+    "score": 920,
+    "work": "Product Manager at InnovateX",
+    "image": "https://randomuser.me/api/portraits/men/2.jpg"
+  },
+  {
+    "name": "Charlie Brown",
+    "position": 3,
+    "score": 890,
+    "work": "UI/UX Designer at Creatify",
+    "image": "https://randomuser.me/api/portraits/men/3.jpg"
+  },
+  {
+    "name": "Dana White",
+    "position": 4,
+    "score": 860,
+    "work": "Data Analyst at DataWorks",
+    "image": "https://randomuser.me/api/portraits/women/4.jpg"
+  },
+  {
+    "name": "Eva Green",
+    "position": 5,
+    "score": 830,
+    "work": "Marketing Specialist at Brandify",
+    "image": "https://randomuser.me/api/portraits/women/5.jpg"
+  },
+  {
+    "name": "Frank Black",
+    "position": 6,
+    "score": 800,
+    "work": "DevOps Engineer at CloudNet",
+    "image": "https://randomuser.me/api/portraits/men/6.jpg"
+  },
+  {
+    "name": "Grace Lee",
+    "position": 7,
+    "score": 770,
+    "work": "QA Engineer at TestLab",
+    "image": "https://randomuser.me/api/portraits/women/7.jpg"
+  },
+  {
+    "name": "Henry King",
+    "position": 8,
+    "score": 740,
+    "work": "Backend Developer at CodeWorks",
+    "image": "https://randomuser.me/api/portraits/men/8.jpg"
+  },
+  {
+    "name": "Isabelle Moore",
+    "position": 9,
+    "score": 710,
+    "work": "HR Manager at PeopleFirst",
+    "image": "https://randomuser.me/api/portraits/women/9.jpg"
+  },
+  {
+    "name": "Jack Taylor",
+    "position": 10,
+    "score": 680,
+    "work": "Frontend Developer at Webify",
+    "image": "https://randomuser.me/api/portraits/men/10.jpg"
+  },
+  {
+    "name": "Karen Wilson",
+    "position": 321,
+    "score": 650,
+    "work": "Business Analyst at InsightCorp",
+    "image": "https://randomuser.me/api/portraits/women/11.jpg"
+  }
+]

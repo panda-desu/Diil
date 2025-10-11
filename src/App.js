@@ -11,6 +11,9 @@ import Interviews from "./page/Interviews";
 import DNA from "./page/DNA";
 import Contact from "./page/Contact";
 import Feedback from "./page/Feedback";
+import Game from "./page/Game";
+import Games from "./page/game/Games";
+import Leaderboard from "./page/game/Leaderboard";
 
 function App() {
   return (
@@ -35,6 +38,12 @@ function App() {
                 <Route path="/contact" element={<Contact />} />
 
                 <Route path="/feedback" element={<Feedback />} />
+
+                <Route path="/games" element={<Game />}>
+                  <Route index element={<Game />} />
+                  <Route path="allgame" element={<Games />} />
+                  <Route path="leaderboard" element={<Leaderboard />} />
+                </Route>
               </Route>
             </Routes>
           </Router>

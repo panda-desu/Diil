@@ -1,0 +1,27 @@
+[
+  {
+    "GameName": "Celestial Odyssey",
+    "description": "Explore distant galaxies and uncover ancient civilizations in this open-world space adventure.",
+    "gameImage": "/img/games/game1.svg"
+  },
+  {
+    "GameName": "Shadowstrike: Origins",
+    "description": "A stealth-based action game where you play as an elite assassin seeking redemption in a cyberpunk world.",
+    "gameImage": "/img/games/game2.svg"
+  },
+  {
+    "GameName": "Mythic Realms",
+    "description": "Build your empire, forge alliances, and conquer mythical lands in this fantasy strategy game.",
+    "gameImage": "/img/games/game3.svg"
+  },
+  {
+    "GameName": "Turbo Drift X",
+    "description": "Race through neon-lit streets, customize your ride, and dominate the underground drift scene.",
+    "gameImage": "/img/games/game1.svg"
+  },
+  {
+    "GameName": "Pixel Quest",
+    "description": "A retro-style platformer where you embark on a journey to rescue the lost kingdom from dark magic.",
+    "gameImage": "/img/games/game1.svg"
+  }
+]

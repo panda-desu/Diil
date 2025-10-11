@@ -1,0 +1,47 @@
+[
+  {
+    "news": "NASA prepares to launch a new rover for lunar exploration.",
+    "date": "2025-10-11",
+    "type": "news"
+  },
+  {
+    "news": "Severe solar storm expected to affect satellite communications.",
+    "date": "2025-10-10",
+    "type": "warning"
+  },
+  {
+    "news": "Astronaut shares breathtaking photo of Earth from orbit.",
+    "date": "2025-10-09",
+    "type": "favorite"
+  },
+  {
+    "news": "New AI breakthrough enables real-time language translation.",
+    "date": "2025-10-08",
+    "type": "news"
+  },
+  {
+    "news": "Heatwave alert issued for southern regions this weekend.",
+    "date": "2025-10-07",
+    "type": "warning"
+  },
+  {
+    "news": "Fans celebrate the 50th anniversary of the Apollo missions.",
+    "date": "2025-10-06",
+    "type": "favorite"
+  },
+  {
+    "news": "Economists predict strong recovery in tech investments.",
+    "date": "2025-10-05",
+    "type": "news"
+  },
+  {
+    "news": "Authorities issue warning over rising air pollution levels.",
+    "date": "2025-10-04",
+    "type": "warning"
+  },
+  {
+    "news": "Rare meteor shower lights up the night sky across Asia.",
+    "date": "2025-10-03",
+    "type": "favorite"
+  }
+]
