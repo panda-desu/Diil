@@ -280,7 +280,7 @@ const Interviews = () => {
 
       <div className="md:hidden flex flex-col px-4 pt-6 pb-3 ">
         <div className="flex items-center justify-between mb-4">
-          <p className=" text-base font-bold text-[#020618]">Компаниуд</p>
+          <p className=" text-base font-bold text-[#020618]">Ярилцлагууд</p>
         </div>
 
         {/* filter */}
@@ -304,7 +304,7 @@ const Interviews = () => {
       </div>
 
       {/* phone table */}
-      <div className="md:hidden block h-[70vh] overflow-y-scroll scroll-bar-hidden">
+      <div className="md:hidden block h-[70vh] overflow-y-scroll scrollbar-hidden">
         {data.map((item, index) => (
           <div key={index} className="border-b border-[#CAD5E2] p-4">
             <div className="flex  items-start gap-2 justify-between mb-3">

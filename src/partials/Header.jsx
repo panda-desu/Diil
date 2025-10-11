@@ -41,7 +41,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full h-[4rem] flex items-center justify-between py-3 md:ps-2 md:pe-6 pe-2 border-b lg:border-transparent border-[#CAD5E2]">
+    <div className="h-[4rem] flex items-center justify-between py-3 md:ps-2 md:pe-6 pe-2 border-b lg:border-transparent border-[#CAD5E2] bg-[#fff]">
       <button
         onClick={() => setSidebar(!sidebar)}
         disabled={sidebar}

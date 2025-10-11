@@ -173,7 +173,7 @@ export default function Companies() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:gap-3 gap-0">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:h-max h-[71vh] md:overflow-hidden overflow-y-scroll scrollbar-hidden md:gap-3 gap-0">
           {filteredCompanies.map((company) => (
             <div
               key={company.id}
