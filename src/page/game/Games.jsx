@@ -54,7 +54,7 @@ const Games = () => {
               <button className="w-10 h-10 rounded-full bg-[#1D293D] border-2 border-[#020618]  items-center justify-center text-[#fff] hidden md:flex">
                 <IoPlayOutline />
               </button>
-              <button className="flex items-center gap-2 py-1 ps-6 pe-1 bg-[#020618] hover:bg-[#29EAFF] rounded-[99px] transition-all duration-300 group">
+              <button className="md:hidden flex items-center gap-2 py-1 ps-6 pe-1 bg-[#020618] hover:bg-[#29EAFF] rounded-[99px] transition-all duration-300 group">
                 <p className="text-[#fff] transition-colors duration-300 group-hover:text-[#0F172B]">
                   Тоглох
                 </p>
