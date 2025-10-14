@@ -201,7 +201,7 @@ const Home = () => {
         </div>
 
         {/* last filters */}
-        <div className="flex items-center md:gap-2.5 gap-2">
+        <div className="flex items-center md:gap-2.5 gap-2 ">
           <div className="md:block hidden h-4 w-[1px] bg-[#CAD5E2]" />
           <button
             onClick={handleClick}

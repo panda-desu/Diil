@@ -58,7 +58,7 @@ const Games = () => {
                 <p className="text-[#fff] transition-colors duration-300 group-hover:text-[#0F172B]">
                   Тоглох
                 </p>
-                <div className="rounded-full w-10 h-10 flex items-center justify-center bg-[#1D293D]">
+                <div className="rounded-full w-10 h-10 flex items-center justify-center bg-[#1D293D] ">
                   <IoPlayOutline className="text-[#fff] text-xl group-hover:text-[#29EAFF] duration-300 transition-colors" />
                 </div>
               </button>
