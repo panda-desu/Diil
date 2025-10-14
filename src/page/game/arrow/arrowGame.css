@@ -1,0 +1,316 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.arrow-game-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.arrow-game-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+}
+
+.arrow-game-ui {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+}
+
+.arrow-time-display {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10px 30px;
+  border-radius: 5px;
+  font-family: monospace;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: white;
+  z-index: 100;
+}
+
+.arrow-coin-display {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-family: monospace;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffd700;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+}
+
+.arrow-coin-increment {
+  position: absolute;
+  top: -30px;
+  right: 10px;
+  color: #4caf50;
+  font-size: 24px;
+  font-weight: bold;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes coinIncrementAnim {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.coin-animate {
+  animation: coinIncrementAnim 1s ease-out forwards;
+}
+
+.arrow-coin-icon {
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.arrow-game-info {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: white;
+}
+
+.arrow-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+.arrow-modal {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  max-width: 500px;
+  margin: 20px;
+  color: #1d1d1f;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12),
+    0 0 1px rgba(255, 255, 255, 0.5) inset;
+}
+
+.arrow-modal h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.arrow-modal p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.arrow-btn {
+  background: linear-gradient(45deg, #4caf50, #45a049);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  margin: 10px;
+  transition: transform 0.2s;
+}
+
+.arrow-btn:hover {
+  transform: translateY(-2px);
+}
+
+.arrow-btn:active {
+  transform: translateY(0);
+}
+
+.arrow-feedback-icon {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  width: 80px;
+  height: 80px;
+  z-index: 150;
+  opacity: 0;
+}
+
+@keyframes feedbackIconAnim {
+  0% {
+    transform: translateX(-50%) scale(0) translateY(-20px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.2) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.feedback-icon-animate {
+  animation: feedbackIconAnim 0.4s ease-out forwards;
+}
+
+.arrow-instruction {
+  display: inline-block;
+  margin: 5px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  font-family: monospace;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.arrow-results {
+  text-align: left;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Confetti animations */
+@keyframes confetti-slow {
+  0% {
+    transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+  }
+
+  100% {
+    transform: translate3d(25px, 105vh, 0) rotateX(360deg) rotateY(180deg);
+  }
+}
+
+@keyframes confetti-medium {
+  0% {
+    transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+  }
+
+  100% {
+    transform: translate3d(100px, 105vh, 0) rotateX(100deg) rotateY(360deg);
+  }
+}
+
+@keyframes confetti-fast {
+  0% {
+    transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+  }
+
+  100% {
+    transform: translate3d(-50px, 105vh, 0) rotateX(10deg) rotateY(250deg);
+  }
+}
+
+.confetti-container {
+  perspective: 700px;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.confetti {
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+  border-radius: 0%;
+}
+
+.confetti--animation-slow {
+  animation: confetti-slow 2.25s linear 1 forwards;
+}
+
+.confetti--animation-medium {
+  animation: confetti-medium 1.75s linear 1 forwards;
+}
+
+.confetti--animation-fast {
+  animation: confetti-fast 1.25s linear 1 forwards;
+}
+
+@media (max-width: 768px) {
+  .arrow-modal {
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  .arrow-game-ui {
+    font-size: 12px;
+  }
+
+  .arrow-time-display {
+    left: 10px;
+    transform: none;
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .arrow-coin-display {
+    top: 20px;
+    right: 10px;
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .arrow-coin-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 6px;
+  }
+}

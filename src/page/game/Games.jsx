@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import data from "../../json/games.json";
 import { IoPlayOutline } from "react-icons/io5";
 import news from "../../json/news.json";
 import { PiWarningOctagon } from "react-icons/pi";
 import { LuFileSpreadsheet } from "react-icons/lu";
 import { FaRegStar } from "react-icons/fa6";
+import ArrowGame from "./arrow/ArrowGame";
 
-const Games = () => {
+const Games = ({ onGameSelect }) => {
+  const [showArrowGame, setShowArrowGame] = useState(false);
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const now = new Date();
@@ -25,6 +27,10 @@ const Games = () => {
 
     return `${dayText} - ${month}/${day} ${year}`;
   };
+
+  if (showArrowGame) {
+    return <ArrowGame />;
+  }
 
   return (
     <div className="p-4 w-full">
@@ -45,16 +51,34 @@ const Games = () => {
             <div className="md:pt-5 pt-8 flex md:flex-row flex-col items-center justify-between gap-2 md:w-full w-[47%]">
               <div className="md:w-[70%]">
                 <p className="text-[#020618] font-bold truncate w-[153px] md:text-base text-sm">
-                  {item.GameName} asfasdfabshdf bsfhdfb
+                  {item.GameName}
                 </p>
                 <p className="text-xs text-[#62748E] md:line-clamp-2 line-clamp-4">
                   {item.description}
                 </p>
               </div>
-              <button className="w-10 h-10 rounded-full bg-[#1D293D] border-2 border-[#020618]  items-center justify-center text-[#fff] hidden md:flex">
+              <button
+                onClick={() => {
+                  if (item.GameName.toLowerCase().includes('arrow')) {
+                    setShowArrowGame(true);
+                  } else if (onGameSelect) {
+                    onGameSelect();
+                  }
+                }}
+                className="w-10 h-10 rounded-full bg-[#1D293D] border-2 border-[#020618]  items-center justify-center text-[#fff] hidden md:flex hover:bg-[#29EAFF] transition-all duration-300 cursor-pointer"
+              >
                 <IoPlayOutline />
               </button>
-              <button className="md:hidden flex items-center gap-2 py-1 ps-6 pe-1 bg-[#020618] hover:bg-[#29EAFF] rounded-[99px] transition-all duration-300 group">
+              <button
+                onClick={() => {
+                  if (item.GameName.toLowerCase().includes('arrow')) {
+                    setShowArrowGame(true);
+                  } else if (onGameSelect) {
+                    onGameSelect();
+                  }
+                }}
+                className="md:hidden flex items-center gap-2 py-1 ps-6 pe-1 bg-[#020618] hover:bg-[#29EAFF] rounded-[99px] transition-all duration-300 group cursor-pointer"
+              >
                 <p className="text-[#fff] transition-colors duration-300 group-hover:text-[#0F172B]">
                   Тоглох
                 </p>

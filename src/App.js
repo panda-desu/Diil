@@ -44,6 +44,12 @@ function App() {
                   <Route path="allgame" element={<Games />} />
                   <Route path="leaderboard" element={<Leaderboard />} />
                 </Route>
+
+                <Route path="/arrow" element={<Game />}>
+                  <Route index element={<Game />} />
+                  <Route path="allgame" element={<Games />} />
+                  <Route path="leaderboard" element={<Leaderboard />} />
+                </Route>
               </Route>
             </Routes>
           </Router>

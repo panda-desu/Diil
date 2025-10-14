@@ -1,5 +1,10 @@
 [
   {
+    "GameName": "Arrow",
+    "description": "Arrow Description",
+    "gameImage": "/img/games/game1.svg"
+  },
+  {
     "GameName": "Celestial Odyssey",
     "description": "Explore distant galaxies and uncover ancient civilizations in this open-world space adventure.",
     "gameImage": "/img/games/game1.svg"
