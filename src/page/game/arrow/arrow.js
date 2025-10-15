@@ -158,6 +158,14 @@ class ArrowGame {
 
         this.confettiful = null;
 
+        // Store event handlers for cleanup
+        this.eventHandlers = {
+            keydown: null,
+            resize: null,
+            touchstart: null,
+            touchend: null
+        };
+
         this.init();
     }
 
@@ -174,7 +182,7 @@ class ArrowGame {
         }
 
         // Handle window resize
-        window.addEventListener('resize', () => {
+        this.eventHandlers.resize = () => {
             this.canvas.width = window.innerWidth;
             this.canvas.height = window.innerHeight;
             // Update createSize for responsive layout
@@ -184,7 +192,8 @@ class ArrowGame {
             if (this.arrows.length > 0) {
                 this.render();
             }
-        });
+        };
+        window.addEventListener('resize', this.eventHandlers.resize);
 
         this.updateUI();
         this.showTutorial();
@@ -607,7 +616,7 @@ class ArrowGame {
     }
 
     setupEventListeners() {
-        document.addEventListener('keydown', (event) => {
+        this.eventHandlers.keydown = (event) => {
             const keyMap = {
                 'ArrowUp': 0,
                 'ArrowRight': 1,
@@ -619,19 +628,20 @@ class ArrowGame {
                 event.preventDefault();
                 this.handleInput(keyMap[event.code]);
             }
-        });
+        };
+        document.addEventListener('keydown', this.eventHandlers.keydown);
 
         if (this.isMobile) {
             let touchStartX = 0;
             let touchStartY = 0;
 
-            this.canvas.addEventListener('touchstart', (event) => {
+            this.eventHandlers.touchstart = (event) => {
                 event.preventDefault();
                 touchStartX = event.touches[0].clientX;
                 touchStartY = event.touches[0].clientY;
-            });
+            };
 
-            this.canvas.addEventListener('touchend', (event) => {
+            this.eventHandlers.touchend = (event) => {
                 event.preventDefault();
                 if (!event.changedTouches) return;
 
@@ -652,7 +662,10 @@ class ArrowGame {
                         this.handleInput(direction);
                     }
                 }
-            });
+            };
+
+            this.canvas.addEventListener('touchstart', this.eventHandlers.touchstart);
+            this.canvas.addEventListener('touchend', this.eventHandlers.touchend);
         }
     }
 }
@@ -685,9 +698,33 @@ ArrowGame.prototype.restart = function() {
 
 ArrowGame.prototype.cleanup = function() {
     this.isPlay = false;
+
+    // Stop confetti
     if (this.confettiful) {
         this.confettiful.stop();
     }
+
+    // Remove all event listeners
+    if (this.eventHandlers.keydown) {
+        document.removeEventListener('keydown', this.eventHandlers.keydown);
+    }
+    if (this.eventHandlers.resize) {
+        window.removeEventListener('resize', this.eventHandlers.resize);
+    }
+    if (this.eventHandlers.touchstart) {
+        this.canvas.removeEventListener('touchstart', this.eventHandlers.touchstart);
+    }
+    if (this.eventHandlers.touchend) {
+        this.canvas.removeEventListener('touchend', this.eventHandlers.touchend);
+    }
+
+    // Clear canvas
+    if (this.ctx) {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+
+    // Clear arrows array
+    this.arrows = [];
 };
 
 // Export for ES6 modules

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./arrowGame.css";
+import styles from "./ArrowGame.module.css";
 
 const ArrowGame = () => {
   const canvasRef = useRef(null);
@@ -89,12 +89,12 @@ const ArrowGame = () => {
   };
 
   return (
-    <div className="arrow-game-container">
-      <canvas ref={canvasRef} className="arrow-game-canvas"></canvas>
-      <div className="confetti-container"></div>
+    <div className={styles["arrow-game-container"]}>
+      <canvas ref={canvasRef} className={styles["arrow-game-canvas"]}></canvas>
+      <div className={styles["confetti-container"]}></div>
 
-      <div className="arrow-game-ui hidden">
-        <div className="arrow-game-info">
+      <div className={`${styles["arrow-game-ui"]} ${styles.hidden}`}>
+        <div className={styles["arrow-game-info"]}>
           <div>
             Time: <span id="timeLeft">{gameStats.timeLeft}</span>s
           </div>
@@ -107,45 +107,45 @@ const ArrowGame = () => {
         </div>
       </div>
 
-      <div className="arrow-time-display">TIME {formatTime(gameStats.timeLeft)}</div>
+      <div className={styles["arrow-time-display"]}>TIME {formatTime(gameStats.timeLeft)}</div>
 
-      <div className="arrow-coin-display">
+      <div className={styles["arrow-coin-display"]}>
         <img
           src="/assets/arrow/image/coin.png"
           alt="coin"
-          className="arrow-coin-icon"
+          className={styles["arrow-coin-icon"]}
         />
         <span id="coinCount">{gameStats.coins}</span>
-        <div id="coinIncrement" className="arrow-coin-increment"></div>
+        <div id="coinIncrement" className={styles["arrow-coin-increment"]}></div>
       </div>
 
       <img
         id="feedbackIcon"
-        className="arrow-feedback-icon"
+        className={styles["arrow-feedback-icon"]}
         alt="feedback"
       />
 
       {/* Tutorial Overlay */}
       {showTutorial && (
-        <div className="arrow-overlay">
-          <div className="arrow-modal">
+        <div className={styles["arrow-overlay"]}>
+          <div className={styles["arrow-modal"]}>
             <h2>Game Tutorial</h2>
             <p>
               Press the arrow key that points in the{" "}
               <strong>opposite direction</strong> of the main arrow.
             </p>
             <div>
-              <div className="arrow-instruction">↑ Up Arrow</div>
-              <div className="arrow-instruction">→ Right Arrow</div>
-              <div className="arrow-instruction">↓ Down Arrow</div>
-              <div className="arrow-instruction">← Left Arrow</div>
+              <div className={styles["arrow-instruction"]}>↑ Up Arrow</div>
+              <div className={styles["arrow-instruction"]}>→ Right Arrow</div>
+              <div className={styles["arrow-instruction"]}>↓ Down Arrow</div>
+              <div className={styles["arrow-instruction"]}>← Left Arrow</div>
             </div>
             {isMobile && (
-              <p className="arrow-mobile-instructions">
+              <p className={styles["arrow-mobile-instructions"]}>
                 On mobile: Swipe in the direction of the colored arrow
               </p>
             )}
-            <button className="arrow-btn" onClick={handleStartTutorial}>
+            <button className={styles["arrow-btn"]} onClick={handleStartTutorial}>
               Start Tutorial
             </button>
           </div>
@@ -154,12 +154,12 @@ const ArrowGame = () => {
 
       {/* Tutorial Complete Overlay */}
       {showTutorialComplete && (
-        <div className="arrow-overlay">
-          <div className="arrow-modal">
+        <div className={styles["arrow-overlay"]}>
+          <div className={styles["arrow-modal"]}>
             <h2>Tutorial Complete!</h2>
             <p>Great job! Now let's play the real game.</p>
             <p>You have 60 seconds to get as many correct as possible!</p>
-            <button className="arrow-btn" onClick={handleStartGame}>
+            <button className={styles["arrow-btn"]} onClick={handleStartGame}>
               Start Game
             </button>
           </div>
@@ -168,10 +168,10 @@ const ArrowGame = () => {
 
       {/* Game Complete Overlay */}
       {showGameComplete && results && (
-        <div className="arrow-overlay">
-          <div className="arrow-modal">
+        <div className={styles["arrow-overlay"]}>
+          <div className={styles["arrow-modal"]}>
             <h2>Game Complete!</h2>
-            <div className="arrow-results">
+            <div className={styles["arrow-results"]}>
               <div>
                 <strong>Correct:</strong> {results.correctCount}
               </div>
@@ -188,7 +188,7 @@ const ArrowGame = () => {
                 <strong>Average Correct Time:</strong> {results.avgCorrectTime}s
               </div>
             </div>
-            <button className="arrow-btn" onClick={handleRestart}>
+            <button className={styles["arrow-btn"]} onClick={handleRestart}>
               Play Again
             </button>
           </div>
