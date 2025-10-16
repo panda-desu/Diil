@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./ArrowGame.module.css";
+import { getUserIdFromUrl } from "../../../utils/urlUtils";
+import { saveArrowGameResults } from "../../../utils/gameApi";
 
 const ArrowGame = () => {
   const canvasRef = useRef(null);
+  const containerRef = useRef(null);
   const gameInstanceRef = useRef(null);
   const [showTutorial, setShowTutorial] = useState(true);
   const [showTutorialComplete, setShowTutorialComplete] = useState(false);
@@ -15,8 +18,18 @@ const ArrowGame = () => {
   });
   const [results, setResults] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [userId, setUserId] = useState(null);
+  const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
+    // URL-аас хэрэглэгчийн ID авах
+    const userIdFromUrl = getUserIdFromUrl();
+    setUserId(userIdFromUrl);
+
+    if (!userIdFromUrl) {
+      console.warn('URL-д хэрэглэгчийн ID байхгүй байна. Тоглоомын дата хадгалагдахгүй.');
+    }
+
     // Check if mobile
     const checkMobile =
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -44,10 +57,28 @@ const ArrowGame = () => {
           setShowTutorial(false);
           setShowTutorialComplete(true);
         },
-        (results) => {
+        async (results) => {
           setResults(results);
           setShowGameComplete(true);
-        }
+
+          // Тоглоомын дата хадгалах
+          if (userIdFromUrl) {
+            setIsSaving(true);
+            try {
+              const saveResult = await saveArrowGameResults(userIdFromUrl, results);
+              if (saveResult.success) {
+                console.log('Тоглоомын дата амжилттай хадгалагдлаа:', saveResult.data);
+              } else {
+                console.error('Тоглоомын дата хадгалахад алдаа гарлаа:', saveResult.error);
+              }
+            } catch (error) {
+              console.error('Тоглоомын дата хадгалахад алдаа:', error);
+            } finally {
+              setIsSaving(false);
+            }
+          }
+        },
+        containerRef.current  // Pass container element for confetti
       );
     };
 
@@ -89,7 +120,7 @@ const ArrowGame = () => {
   };
 
   return (
-    <div className={styles["arrow-game-container"]}>
+    <div ref={containerRef} className={styles["arrow-game-container"]}>
       <canvas ref={canvasRef} className={styles["arrow-game-canvas"]}></canvas>
       <div className={styles["confetti-container"]}></div>
 
@@ -187,6 +218,16 @@ const ArrowGame = () => {
               <div>
                 <strong>Average Correct Time:</strong> {results.avgCorrectTime}s
               </div>
+              {isSaving && (
+                <div style={{ marginTop: "10px", color: "#4CAF50" }}>
+                  Тоглоомын үр дүнг хадгалж байна...
+                </div>
+              )}
+              {!isSaving && userId && (
+                <div style={{ marginTop: "10px", color: "#4CAF50", fontSize: "0.9em" }}>
+                  ✓ Үр дүн хадгалагдлаа
+                </div>
+              )}
             </div>
             <button className={styles["arrow-btn"]} onClick={handleRestart}>
               Play Again

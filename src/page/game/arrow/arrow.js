@@ -11,8 +11,17 @@ class Confettiful {
     }
 
     _setupElements() {
-        const containerEl = document.querySelector('.confetti-container');
-        this.containerEl = containerEl;
+        // Try to find confetti-container inside the provided element first
+        if (this.el) {
+            this.containerEl = this.el.querySelector('.confetti-container') ||
+                              this.el.querySelector('[class*="confetti-container"]');
+        }
+
+        // Fallback to document query if not found
+        if (!this.containerEl) {
+            this.containerEl = document.querySelector('.confetti-container') ||
+                              document.querySelector('[class*="confetti-container"]');
+        }
     }
 
     _renderConfetti() {
@@ -30,11 +39,23 @@ class Confettiful {
             const confettiLeft = (Math.floor(Math.random() * this.el.offsetWidth)) + 'px';
             const confettiAnimation = this.confettiAnimations[Math.floor(Math.random() * this.confettiAnimations.length)];
 
-            confettiEl.classList.add('confetti', 'confetti--animation-' + confettiAnimation);
+            // Apply inline styles for animation
+            confettiEl.style.position = 'absolute';
+            confettiEl.style.zIndex = '1000';
+            confettiEl.style.top = '-10px';
             confettiEl.style.left = confettiLeft;
             confettiEl.style.width = confettiSize;
             confettiEl.style.height = confettiSize;
             confettiEl.style.backgroundColor = confettiBackground;
+            confettiEl.style.borderRadius = '0%';
+
+            // Apply animation based on speed
+            const animations = {
+                'slow': 'confetti-slow 2.25s linear 1 forwards',
+                'medium': 'confetti-medium 1.75s linear 1 forwards',
+                'fast': 'confetti-fast 1.25s linear 1 forwards'
+            };
+            confettiEl.style.animation = animations[confettiAnimation];
 
             confettiEl.removeTimeout = setTimeout(function() {
                 if (confettiEl.parentNode) {
@@ -76,12 +97,13 @@ class ArrowSequence {
 }
 
 class ArrowGame {
-    constructor(canvas, onStatsUpdate, onTutorialComplete, onGameComplete) {
+    constructor(canvas, onStatsUpdate, onTutorialComplete, onGameComplete, containerElement = null) {
         this.canvas = canvas;
         this.ctx = this.canvas.getContext('2d');
         this.onStatsUpdate = onStatsUpdate;
         this.onTutorialComplete = onTutorialComplete;
         this.onGameComplete = onGameComplete;
+        this.containerElement = containerElement;
 
         // Set canvas size to full viewport
         this.canvas.width = window.innerWidth;
@@ -363,7 +385,9 @@ class ArrowGame {
     }
 
     createConfetti() {
-        const gameContainer = document.querySelector('.arrow-game-container');
+        // Use provided container element or fallback to querySelector
+        const gameContainer = this.containerElement || document.querySelector('.arrow-game-container');
+
         if (!gameContainer) {
             console.warn('Game container not found for confetti');
             return;
@@ -372,6 +396,7 @@ class ArrowGame {
         if (!this.confettiful) {
             this.confettiful = new Confettiful(gameContainer);
         }
+
         this.confettiful.start();
 
         // Stop confetti after 3 seconds
@@ -575,7 +600,8 @@ class ArrowGame {
             wrongCount: this.wrongCount,
             accuracy: accuracy,
             avgTime: avgTime.toFixed(2),
-            avgCorrectTime: avgCorrectTime.toFixed(2)
+            avgCorrectTime: avgCorrectTime.toFixed(2),
+            coins: this.coins
         };
 
         // Call callback
